@@ -33,7 +33,7 @@ export default () => {
       <div className="playground-right">
         <iframe
           key={code}
-          src={`/#/preview?code=${encode(code)}`}
+          src={`${location.pathname}#/preview?code=${encode(code)}`}
         />
       </div>
     </div>
