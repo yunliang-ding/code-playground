@@ -14,7 +14,6 @@ export default ({
   const [code, setCode] = useState(
     searchParams.code ? decode(searchParams.code) : defualtCode,
   );
-  console.log('code',  code)
   return (
     <div className="playground">
       <div className="playground-left">
