@@ -8,11 +8,13 @@ const defualtCode = `export default () => {
   return 'hello world';
 }`;
 
-export default () => {
-  const params: any = new URLSearchParams(location.hash.split('?')[1]);
+export default ({
+  searchParams
+}) => {
   const [code, setCode] = useState(
-    params.get('code') ? decode(params.get('code')) : defualtCode,
+    searchParams.code ? decode(searchParams.code) : defualtCode,
   );
+  console.log('code',  code)
   return (
     <div className="playground">
       <div className="playground-left">
