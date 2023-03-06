@@ -1,8 +1,8 @@
 import { useState, memo } from 'react';
-import { CodeEditor, getTools } from 'react-core-form-designer';
+import { CodeEditor, Tools } from 'react-core-form';
 import './index.less';
 
-const { encode, decode } = getTools();
+const { encode, decode } = Tools;
 
 const defualtCode = `export default () => {
   return 'hello world';
