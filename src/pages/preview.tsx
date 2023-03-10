@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import * as reactCoreForm from 'react-core-form';
 import * as reactCoreFormDesigner from 'react-core-form-designer';
 
-const { babelParse, decode } = reactCoreFormDesigner.getTools();
+const { babelParse, decode } = reactCoreForm.Tools;
 
 export default () => {
   const params: any = new URLSearchParams(location.hash.split('?')[1]);
@@ -13,7 +13,6 @@ export default () => {
       const ComponentApp = await babelParse({
         // base64 转一下
         code: decode(params.get('code')),
-        prefix: '',
         require: {
           'react-core-form': reactCoreForm,
           'react-core-form-designer': reactCoreFormDesigner,
