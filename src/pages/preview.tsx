@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import ReactDom from 'react-dom';
 import * as reactCoreForm from 'react-core-form';
 import * as reactCoreFormDesigner from 'react-core-form-designer';
+import { ConsoleRender, decode } from 'react-core-form-tools';
 
-const { babelParse, decode } = reactCoreForm.Tools;
+const { babelParse } = reactCoreForm;
 
 export default () => {
   const params: any = new URLSearchParams(location.hash.split('?')[1]);
@@ -37,7 +38,7 @@ export default () => {
       parseStringToModule();
     }
   }, []);
-  const logInstance = reactCoreForm.ConsoleRender.create({
+  const logInstance = ConsoleRender.create({
     target: '.playground-iframe-console-body',
   });
   useEffect(() => {
