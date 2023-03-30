@@ -1,17 +1,12 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef } from 'react';
 import { CloudComponent, Button } from 'react-core-form';
-import { message } from 'antd';
+import { notification } from 'antd';
 import axios from '@/axios';
 import './index.less';
 
 export default (props) => {
   const componentRef: any = useRef({});
-  useEffect(() => {
-    (window as any).removeComponent = async (id: number) => {
-      await axios.get(`/component/delete/${id}`);
-    };
-  }, []);
   const addOrUpdate = async (value) => {
     const {
       data: { code, data },
@@ -24,9 +19,15 @@ export default (props) => {
       selected: undefined,
     });
     if (code === 200) {
-      message.success('保存成功');
+      notification.success({
+        message: '提示',
+        description: value.id ? '已更新' : '添加成功'
+      });
     } else {
-      message.error('保存失败');
+      notification.error({
+        message: '提示',
+        description: '保存失败'
+      });
     }
     return data;
   };
