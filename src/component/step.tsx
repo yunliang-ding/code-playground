@@ -6,12 +6,8 @@ export default ({ logs }) => {
   return (
     <div className="app-step-logs">
       <pre>
-        {logs.map((log, index) => {
-          return (
-            <p key={log}>
-              {index + 1}: {log}
-            </p>
-          );
+        {logs.map((log) => {
+          return <p key={log}>{log}</p>;
         })}
         <Spin spinning />
       </pre>

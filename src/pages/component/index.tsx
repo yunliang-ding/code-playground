@@ -1,14 +1,15 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef, useState } from 'react';
 import { CloudComponent, Button } from 'react-core-form';
-import { notification } from 'antd';
+import { downloadFile } from 'react-core-form-tools';
+import { notification, Space } from 'antd';
 import axios from '@/axios';
 import Step from '@/component/step';
 import './index.less';
 
 const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
 
-export default (props) => {
+const Component = ({ initialDependencies = [], id }) => {
   const [logs, setLogs]: any = useState(['资源加载中..']);
   const updateLog = async (log, timer = 500) => {
     await sleep(timer);
@@ -54,8 +55,8 @@ export default (props) => {
         ? data.map((item) => {
             return {
               ...item,
-              open: String(item.id) === props.searchParams.id,
-              selected: String(item.id) === props.searchParams.id,
+              open: String(item.id) === id,
+              selected: String(item.id) === id,
               props: JSON.parse(item.props),
             };
           })
@@ -85,23 +86,7 @@ export default (props) => {
               setLoadOver(true);
             }
           }}
-          initialDependencies={[
-            {
-              name: 'html2canvas',
-              version: '1.4.1',
-              path: 'https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.js',
-            },
-            {
-              name: 'axios',
-              version: '1.3.5',
-              path: 'https://unpkg.com/axios@1.3.5/dist/axios.min.js',
-            },
-            {
-              name: 'dayjs',
-              version: '1.11.7',
-              path: 'https://unpkg.com/dayjs@1.11.7/dayjs.min.js',
-            },
-          ]}
+          initialDependencies={initialDependencies}
           onAdd={async (value) => {
             await new Promise((res) => setTimeout(res, 500));
             return await addOrUpdate(value);
@@ -115,23 +100,114 @@ export default (props) => {
               );
             }
           }}
+          onAddDep={async (dep) => {
+            const {
+              data: { code, data },
+            } = await axios.post('/dependencies/add', {
+              ...dep,
+              projectId: 1,
+            });
+            return code === 200
+              ? {
+                  id: data,
+                }
+              : {};
+          }}
+          previewRender={(item) => {
+            const [spin, setSpin]: any = useState(true);
+            const iframeRef: any = useRef();
+            const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
+            return (
+              <div className='app-preview'>
+                <div className="preview-address">
+                  <div>{url}</div>
+                  <Space>
+                    <i
+                      className="iconfont spicon-shuaxin"
+                      onClick={() => {
+                        iframeRef.current.contentWindow.location.reload();
+                        setSpin(true);
+                      }}
+                    />
+                    <i
+                      className="iconfont spicon-zhihang"
+                      onClick={() => {
+                        window.open(url);
+                      }}
+                    />
+                  </Space>
+                </div>
+                {spin && <div className='preview-spin'>loading...</div>}
+                <iframe
+                  ref={iframeRef}
+                  style={{ width: '100%', height: '100%', border: 'none' }}
+                  src={url}
+                  onLoad={() => {
+                    setSpin(false);
+                  }}
+                />
+              </div>
+            );
+          }}
           extra={[
             <Button
+              spin
               type="primary"
               size="small"
-              key="new-window-preview"
-              className="new-window-preview"
-              onClick={() => {
-                window.open(
-                  `${location.pathname}#/component/preview?id=${componentRef.current.code.id}`,
+              onClick={async () => {
+                const url = URL.createObjectURL(
+                  new Blob(
+                    JSON.stringify(
+                      [
+                        {
+                          componentName:
+                            componentRef.current.code.componentName,
+                          react: componentRef.current.code.react,
+                          less: componentRef.current.code.less,
+                          meta: componentRef.current.code.props,
+                        },
+                      ],
+                      null,
+                      2,
+                    ).split(''),
+                  ),
+                );
+                await downloadFile(
+                  url,
+                  `${componentRef.current.code.componentName}.json`,
                 );
               }}
             >
-              新窗口预览
+              导出当前组件
             </Button>,
           ]}
         />
       </div>
     </>
+  );
+};
+export default (props) => {
+  const [spin, setSpin] = useState(true);
+  const [dependencies, setDependencies] = useState([]);
+  useEffect(() => {
+    axios
+      .post('/dependencies/list', {
+        pageSize: 100,
+      })
+      .then(
+        ({
+          data: {
+            data: { data },
+          },
+        }) => {
+          setDependencies(data);
+          setSpin(false);
+        },
+      );
+  }, []);
+  return spin ? (
+    'loading...'
+  ) : (
+    <Component initialDependencies={dependencies} id={props.searchParams.id} />
   );
 };
