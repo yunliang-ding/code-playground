@@ -40,11 +40,17 @@ const Component = ({ initialDependencies = [], id }) => {
       open: undefined,
       selected: undefined,
     });
-    if (code !== 200) {
+    if (code === 200) {
+      notification.success({
+        message: '提示',
+        description: value.id ? '已更新' : '添加成功',
+        placement: 'bottomRight'
+      });
+    } else {
       notification.error({
         message: '提示',
         description: '保存失败',
-        placement: 'bottomRight',
+        placement: 'bottomRight'
       });
     }
     iframeRef.current.contentWindow.location.reload();
@@ -100,16 +106,6 @@ const Component = ({ initialDependencies = [], id }) => {
             await new Promise((res) => setTimeout(res, 500));
             return await addOrUpdate(value);
           }}
-          onChange={() => {
-            if (componentRef.current.code) {
-              open();
-              history.pushState(
-                {},
-                '',
-                `${location.pathname}#/component?id=${componentRef.current.code.id}`,
-              );
-            }
-          }}
           onAddDep={async (dep) => {
             const {
               data: { code, data },
@@ -124,7 +120,17 @@ const Component = ({ initialDependencies = [], id }) => {
               : {};
           }}
           previewRender={(item) => {
+            if (item) {
+              history.pushState(
+                {},
+                '',
+                `${location.pathname}#/component?id=${item.id}`,
+              );
+            }
             const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
+            useEffect(() => {
+              open();
+            }, [])
             return (
               <div className="app-preview">
                 <div className="preview-address">
