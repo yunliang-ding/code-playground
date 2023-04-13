@@ -1,6 +1,6 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef, useState } from 'react';
-import { CloudComponent, Button } from 'react-core-form';
+import { CloudComponent, Button, CreateSpin } from 'react-core-form';
 import { downloadFile } from 'react-core-form-tools';
 import { notification, Space } from 'antd';
 import axios from '@/axios';
@@ -9,7 +9,18 @@ import './index.less';
 
 const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
 
+const { open, close } = CreateSpin({
+  getContainer: () => {
+    return document.querySelector('.app-preview');
+  },
+  style: {
+    top: 30,
+  },
+  mode: 'vscode',
+} as any);
+
 const Component = ({ initialDependencies = [], id }) => {
+  const iframeRef: any = useRef();
   const [logs, setLogs]: any = useState(['资源加载中..']);
   const updateLog = async (log, timer = 500) => {
     await sleep(timer);
@@ -29,17 +40,15 @@ const Component = ({ initialDependencies = [], id }) => {
       open: undefined,
       selected: undefined,
     });
-    if (code === 200) {
-      notification.success({
-        message: '提示',
-        description: value.id ? '已更新' : '添加成功',
-      });
-    } else {
+    if (code !== 200) {
       notification.error({
         message: '提示',
         description: '保存失败',
+        placement: 'bottomRight',
       });
     }
+    iframeRef.current.contentWindow.location.reload();
+    open();
     return data;
   };
   const list = async () => {
@@ -93,6 +102,7 @@ const Component = ({ initialDependencies = [], id }) => {
           }}
           onChange={() => {
             if (componentRef.current.code) {
+              open();
               history.pushState(
                 {},
                 '',
@@ -114,11 +124,9 @@ const Component = ({ initialDependencies = [], id }) => {
               : {};
           }}
           previewRender={(item) => {
-            const [spin, setSpin]: any = useState(true);
-            const iframeRef: any = useRef();
             const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
             return (
-              <div className='app-preview'>
+              <div className="app-preview">
                 <div className="preview-address">
                   <div>{url}</div>
                   <Space>
@@ -126,7 +134,7 @@ const Component = ({ initialDependencies = [], id }) => {
                       className="iconfont spicon-shuaxin"
                       onClick={() => {
                         iframeRef.current.contentWindow.location.reload();
-                        setSpin(true);
+                        open();
                       }}
                     />
                     <i
@@ -137,13 +145,13 @@ const Component = ({ initialDependencies = [], id }) => {
                     />
                   </Space>
                 </div>
-                {spin && <div className='preview-spin'>loading...</div>}
                 <iframe
                   ref={iframeRef}
                   style={{ width: '100%', height: '100%', border: 'none' }}
                   src={url}
-                  onLoad={() => {
-                    setSpin(false);
+                  onLoad={async () => {
+                    await sleep();
+                    close();
                   }}
                 />
               </div>
@@ -186,10 +194,22 @@ const Component = ({ initialDependencies = [], id }) => {
     </>
   );
 };
+
+const bodySpin = CreateSpin({
+  getContainer: () => {
+    return document.querySelector('body');
+  },
+  style: {
+    top: 0,
+  },
+  mode: 'vscode',
+} as any);
+
 export default (props) => {
   const [spin, setSpin] = useState(true);
   const [dependencies, setDependencies] = useState([]);
   useEffect(() => {
+    bodySpin.open();
     axios
       .post('/dependencies/list', {
         pageSize: 100,
@@ -200,14 +220,13 @@ export default (props) => {
             data: { data },
           },
         }) => {
+          bodySpin.close();
           setDependencies(data);
           setSpin(false);
         },
       );
   }, []);
-  return spin ? (
-    'loading...'
-  ) : (
+  return spin ? null : (
     <Component initialDependencies={dependencies} id={props.searchParams.id} />
   );
 };
