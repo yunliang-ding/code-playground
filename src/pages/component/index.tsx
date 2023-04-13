@@ -7,7 +7,7 @@ import axios from '@/axios';
 import Step from '@/component/step';
 import './index.less';
 
-const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
+export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
 
 const { open, close } = CreateSpin({
   getContainer: () => {
@@ -20,14 +20,9 @@ const { open, close } = CreateSpin({
 } as any);
 
 const Component = ({ initialDependencies = [], id }) => {
-  const iframeRef: any = useRef();
-  const [logs, setLogs]: any = useState(['资源加载中..']);
-  const updateLog = async (log, timer = 500) => {
-    await sleep(timer);
-    logs.push(log);
-    setLogs([...logs]);
-  };
   const componentRef: any = useRef({});
+  const iframeRef: any = useRef({});
+  const stepRef: any = useRef({});
   const [loadOver, setLoadOver]: any = useState(false);
   const addOrUpdate = async (value) => {
     const {
@@ -58,7 +53,7 @@ const Component = ({ initialDependencies = [], id }) => {
     return data;
   };
   const list = async () => {
-    updateLog('加载组件列表..');
+    stepRef.current.updateLogs('加载组件列表..');
     const {
       data: {
         code,
@@ -78,14 +73,14 @@ const Component = ({ initialDependencies = [], id }) => {
         : [],
     );
     await sleep();
-    updateLog('组件列表加载完毕..');
+    stepRef.current.updateLogs('组件列表加载完毕..');
   };
   useEffect(() => {
     list();
   }, []);
   return (
     <>
-      {!loadOver && <Step logs={logs} />}
+      {!loadOver && <Step stepRef={stepRef} />}
       <div style={{ display: loadOver ? 'block' : 'none' }}>
         <CloudComponent
           componentRef={componentRef}
@@ -95,7 +90,7 @@ const Component = ({ initialDependencies = [], id }) => {
           }}
           onSave={addOrUpdate}
           onLog={async (info) => {
-            await updateLog(info, 1000);
+            await stepRef.current.updateLogs(info, 1000);
             if (info === '加载完毕') {
               await sleep(1000);
               setLoadOver(true);
@@ -120,6 +115,8 @@ const Component = ({ initialDependencies = [], id }) => {
               : {};
           }}
           previewRender={(item) => {
+            const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
+            console.log('previewRender', item);
             if (item) {
               history.pushState(
                 {},
@@ -127,7 +124,6 @@ const Component = ({ initialDependencies = [], id }) => {
                 `${location.pathname}#/component?id=${item.id}`,
               );
             }
-            const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
             useEffect(() => {
               open();
             }, [])
