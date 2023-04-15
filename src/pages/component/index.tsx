@@ -48,7 +48,7 @@ const Component = ({ initialDependencies = [], id }) => {
         placement: 'bottomRight'
       });
     }
-    iframeRef.current.contentWindow.location.reload();
+    iframeRef.current?.contentWindow?.location?.reload?.();
     open();
     return data;
   };
@@ -116,7 +116,6 @@ const Component = ({ initialDependencies = [], id }) => {
           }}
           previewRender={(item) => {
             const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
-            console.log('previewRender', item);
             if (item) {
               history.pushState(
                 {},
