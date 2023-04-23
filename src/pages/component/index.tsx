@@ -114,6 +114,18 @@ const Component = ({ initialDependencies = [], id }) => {
                 }
               : {};
           }}
+          onUpdateDep={async (dep) => {
+            const {
+              data: { code },
+            } = await axios.post('/dependencies/update', {
+              ...dep,
+              projectId: 1,
+            });
+            if (code === 200) {
+              return true;
+            }
+            return false;
+          }}
           previewRender={(item) => {
             const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
             if (item) {
@@ -227,6 +239,7 @@ export default (props) => {
         },
       );
   }, []);
+  console.log(dependencies);
   return spin ? null : (
     <Component initialDependencies={dependencies} id={props.searchParams.id} />
   );
