@@ -1,6 +1,6 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef, useState } from 'react';
-import { CloudComponent, Button, CreateSpin } from 'react-core-form';
+import { CloudComponent, Button, CreateSpin, Icon } from 'react-core-form';
 import { downloadFile } from 'react-core-form-tools';
 import { notification, Space } from 'antd';
 import axios from '@/axios';
@@ -8,6 +8,14 @@ import Step from '@/component/step';
 import './index.less';
 
 export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
+
+export const simpleNotice = (text: string, type = 'success') => {
+  notification[type]({
+    message: '提示',
+    description: text,
+    placement: 'bottomRight',
+  });
+};
 
 const { open, close } = CreateSpin({
   getContainer: () => {
@@ -36,17 +44,13 @@ const Component = ({ initialDependencies = [], id }) => {
       selected: undefined,
     });
     if (code === 200) {
-      notification.success({
-        message: '提示',
-        description: value.id ? '已更新' : '添加成功',
-        placement: 'bottomRight'
-      });
+      simpleNotice(
+        value.id
+          ? `组件(${value.componentName})已更新`
+          : `组件(${value.componentName})已添加`,
+      );
     } else {
-      notification.error({
-        message: '提示',
-        description: '保存失败',
-        placement: 'bottomRight'
-      });
+      simpleNotice(`组件(${value.componentName})保存失败`, 'error');
     }
     iframeRef.current?.contentWindow?.location?.reload?.();
     open();
@@ -106,24 +110,33 @@ const Component = ({ initialDependencies = [], id }) => {
               data: { code, data },
             } = await axios.post('/dependencies/add', {
               ...dep,
+              createTime: undefined,
+              updateTime: undefined,
               projectId: 1,
             });
-            return code === 200
-              ? {
-                  id: data,
-                }
-              : {};
+            if (code === 200) {
+              simpleNotice(`新增脚本${dep.name}成功`);
+              return {
+                id: data,
+              };
+            }
+            simpleNotice(`新增脚本${dep.name}失败`, 'error');
+            return {};
           }}
           onUpdateDep={async (dep) => {
             const {
               data: { code },
             } = await axios.post('/dependencies/update', {
               ...dep,
+              createTime: undefined,
+              updateTime: undefined,
               projectId: 1,
             });
             if (code === 200) {
+              simpleNotice(`更新脚本${dep.name}成功`);
               return true;
             }
+            simpleNotice(`更新脚本${dep.name}失败`, 'error');
             return false;
           }}
           previewRender={(item) => {
@@ -137,24 +150,30 @@ const Component = ({ initialDependencies = [], id }) => {
             }
             useEffect(() => {
               open();
-            }, [])
+            }, []);
             return (
               <div className="app-preview">
                 <div className="preview-address">
                   <div>{url}</div>
                   <Space>
-                    <i
-                      className="iconfont spicon-shuaxin"
+                    <Icon
+                      type="refresh"
+                      hover
+                      size={14}
+                      color="#fff"
                       onClick={() => {
                         iframeRef.current.contentWindow.location.reload();
                         open();
                       }}
                     />
-                    <i
-                      className="iconfont spicon-zhihang"
+                    <Icon
+                      type="run"
+                      color="#fff"
+                      size={14}
                       onClick={() => {
                         window.open(url);
                       }}
+                      hover
                     />
                   </Space>
                 </div>
@@ -185,7 +204,7 @@ const Component = ({ initialDependencies = [], id }) => {
                             componentRef.current.code.componentName,
                           react: componentRef.current.code.react,
                           less: componentRef.current.code.less,
-                          meta: componentRef.current.code.props,
+                          props: componentRef.current.code.props,
                         },
                       ],
                       null,
@@ -239,7 +258,6 @@ export default (props) => {
         },
       );
   }, []);
-  console.log(dependencies);
   return spin ? null : (
     <Component initialDependencies={dependencies} id={props.searchParams.id} />
   );

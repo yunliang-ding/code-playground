@@ -1,6 +1,6 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useState } from 'react';
-import { CloudComponent } from 'react-core-form';
+import { CloudComponent, babelParseCode } from 'react-core-form';
 import { isEmpty } from 'react-core-form-tools';
 import axios from '@/axios';
 import { Interpreter } from 'eval5';
@@ -53,13 +53,15 @@ export default ({ searchParams }) => {
       const list = depRes.data.data.data;
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
-        if (item.path) {
+        if (item.content && item.type === 'javascript') {
           try {
-            // 拉取脚本
-            const { data } = await axios.get(item.path);
             // 使用 eval5 加载脚本
-            await interpreter.evaluate(data);
-            dependencies[item.name] = window[item.alise];
+            await interpreter.evaluate(
+              babelParseCode({
+                code: item.content,
+              }),
+            )();
+            dependencies[item.name] = window[item.name];
             console.log(`${item.path} 资源解析成功..`);
           } catch (error) {
             console.log(`${item.path} 资源解析失败..`);
