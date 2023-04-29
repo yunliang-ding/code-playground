@@ -1,6 +1,6 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useState } from 'react';
-import { CloudComponent, babelParseCode } from 'react-core-form';
+import { CloudComponent, babelParseCode, babelParse } from 'react-core-form';
 import { isEmpty } from 'react-core-form-tools';
 import axios from '@/axios';
 import { Interpreter } from 'eval5';
@@ -53,18 +53,30 @@ export default ({ searchParams }) => {
       const list = depRes.data.data.data;
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
-        if (item.content && item.type === 'javascript') {
+        if (item.content) {
+          // 使用 eval5 加载脚本
           try {
-            // 使用 eval5 加载脚本
-            await interpreter.evaluate(
-              babelParseCode({
+            if (item.type === 'javascript') {
+              await interpreter.evaluate(
+                babelParseCode({
+                  code: item.content,
+                }),
+              )();
+              dependencies[item.name] = window[item.name];
+            } else if (item.type === 'react') {
+              dependencies[item.name] = babelParse({
                 code: item.content,
-              }),
-            )();
-            dependencies[item.name] = window[item.name];
-            console.log(`${item.path} 资源解析成功..`);
+              });
+            } else if (item.type === 'less' && (window as any).less) {
+              const { css } = await (window as any).less.render?.(item.content); // 要添加的 CSS 字符串
+              const sheet = new CSSStyleSheet(); // 创建一个 CSSStyleSheet 对象
+              sheet.insertRule(css, 0); // 将 CSS 规则插入到 CSS 样式表中，位置为第一个
+              document.adoptedStyleSheets = [sheet];
+            }
+            console.log(`${item.name} 资源解析成功..`);
           } catch (error) {
-            console.log(`${item.path} 资源解析失败..`);
+            console.log(error);
+            console.log(`${item.name} 资源解析失败..`);
           }
         }
       }
