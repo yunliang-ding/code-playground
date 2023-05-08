@@ -17,10 +17,10 @@ export default ({ stepRef = useRef({}) }: any) => {
   return (
     <div className="app-step-logs">
       <pre>
-        {logs.map((log) => {
-          return <p key={log}>{log}</p>;
-        })}
         <Spin spinning />
+        {logs.reverse().map((log) => {
+          return <p key={log} style={{color: log.includes('失败') ? '#e54e50' : log.includes('成功') ? '#4b9626' : '#888'}}>{log}</p>;
+        })}
       </pre>
     </div>
   );
