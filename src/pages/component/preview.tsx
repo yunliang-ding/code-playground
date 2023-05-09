@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { CloudComponent, babelParseCode, babelParse } from 'react-core-form';
 import { isEmpty } from 'react-core-form-tools';
 import axios from '@/axios';
+import * as AntdIcons from '@ant-design/icons';
 import { Interpreter } from 'eval5';
 import './index.less';
 
@@ -15,6 +16,7 @@ const RenderApp = ({ data, dependencies }) => {
     require: {
       'react-core-form': require('react-core-form'),
       'react-core-form-tools': require('react-core-form-tools'),
+      '@ant-design/icons': AntdIcons,
       ...dependencies,
     },
   })[data.componentName];

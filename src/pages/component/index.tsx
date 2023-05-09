@@ -5,6 +5,7 @@ import { downloadFile } from 'react-core-form-tools';
 import { notification, Space } from 'antd';
 import axios from '@/axios';
 import Step from '@/component/step';
+import * as AntdIcons from '@ant-design/icons';
 import './index.less';
 
 export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
@@ -91,6 +92,7 @@ const Component = ({ initialDependencies = [], id }) => {
           require={{
             'react-core-form': require('react-core-form'),
             'react-core-form-tools': require('react-core-form-tools'),
+            '@ant-design/icons': AntdIcons,
           }}
           onSave={addOrUpdate}
           onLog={async (info) => {
