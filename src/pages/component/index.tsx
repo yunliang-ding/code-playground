@@ -1,11 +1,18 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef, useState } from 'react';
-import { CloudComponent, Button, CreateSpin, Icon } from 'react-core-form';
+import {
+  CloudComponent,
+  Button,
+  CreateSpin,
+  Icon,
+  CreateDrawer,
+} from 'react-core-form';
 import { downloadFile } from 'react-core-form-tools';
 import { notification, Space } from 'antd';
 import axios from '@/axios';
 import Step from '@/component/step';
 import * as AntdIcons from '@ant-design/icons';
+import CodeHistory from './code-history';
 import './index.less';
 
 export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
@@ -221,6 +228,36 @@ const Component = ({ initialDependencies = [], id }) => {
               }}
             >
               导出当前组件
+            </Button>,
+            <Button
+              spin
+              type="primary"
+              size="small"
+              onClick={async () => {
+                CreateDrawer({
+                  title: '修改历史',
+                  className: 'code-history',
+                  footer: false,
+                  width: 'calc(100vw - 200px)',
+                  drawerProps: {
+                    bodyStyle: {
+                      padding: 0,
+                      background: '#1e1e1e',
+                    },
+                  },
+                }).open({
+                  render() {
+                    return (
+                      <CodeHistory
+                        tabType={componentRef.current.selectedTab}
+                        componentId={componentRef.current.code.id}
+                      />
+                    );
+                  },
+                });
+              }}
+            >
+              修改历史
             </Button>,
           ]}
         />
