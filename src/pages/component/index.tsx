@@ -8,7 +8,7 @@ import {
   CreateDrawer,
 } from 'react-core-form';
 import { downloadFile } from 'react-core-form-tools';
-import { notification, Space } from 'antd';
+import { message, notification, Space } from 'antd';
 import axios from '@/axios';
 import Step from '@/component/step';
 import * as AntdIcons from '@ant-design/icons';
@@ -149,6 +149,7 @@ const Component = ({ initialDependencies = [], id }) => {
             return false;
           }}
           previewRender={(item) => {
+            (document as any).title = `${item.componentName}-Code-PlayGround`;
             const url = `${location.origin}${location.pathname}#/component/preview?id=${item.id}`;
             if (item) {
               history.pushState(
@@ -234,27 +235,46 @@ const Component = ({ initialDependencies = [], id }) => {
               type="primary"
               size="small"
               onClick={async () => {
-                CreateDrawer({
-                  title: '修改历史',
-                  className: 'code-history',
-                  footer: false,
-                  width: 'calc(100vw - 200px)',
-                  drawerProps: {
-                    bodyStyle: {
-                      padding: 0,
-                      background: '#1e1e1e',
-                    },
-                  },
-                }).open({
-                  render() {
-                    return (
-                      <CodeHistory
-                        tabType={componentRef.current.selectedTab}
-                        componentId={componentRef.current.code.id}
-                      />
-                    );
-                  },
+                const history: any = await axios.post('/codehistory/list', {
+                  componentId: componentRef.current.code.id,
+                  pageSize: 20,
                 });
+                if (history.data.code === 200) {
+                  if (history.data.data.data.length === 0) {
+                    message.info('暂无修改记录');
+                  } else {
+                    CreateDrawer({
+                      title: '修改历史',
+                      className: 'code-history',
+                      footer: false,
+                      width: 'calc(100vw - 200px)',
+                      drawerProps: {
+                        bodyStyle: {
+                          padding: 0,
+                          background: '#1e1e1e',
+                        },
+                      },
+                    }).open({
+                      render() {
+                        return (
+                          <CodeHistory
+                            historys={history.data.data.data.map(
+                              (item, index) => {
+                                return {
+                                  ...item,
+                                  before: JSON.parse(item.before),
+                                  after: JSON.parse(item.after),
+                                };
+                              },
+                            )}
+                          />
+                        );
+                      },
+                    });
+                  }
+                } else {
+                  message.error('接口异常!')
+                }
               }}
             >
               修改历史
