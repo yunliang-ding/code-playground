@@ -1,67 +1,93 @@
 import { CreateModal, Icon } from 'react-core-form';
 import axios from '@/axios';
 import './index.less';
+import { useEffect, useState } from 'react';
+import { Spin } from 'antd';
 
 export default () => {
-  const addOrUpdate = async (initialValues = {
-    id: undefined
-  }  as any) => {
+  const [list, setList] = useState([]);
+  const [spin, setSpin] = useState(true);
+  const addOrUpdate = async (
+    initialValues = {
+      id: undefined,
+    } as any,
+  ) => {
     CreateModal({
-      title: initialValues.id ? '修改类目' : '添加类目',
+      title: initialValues.id ? '修改应用名称' : '添加应用',
       initialValues,
       schema: [
         {
           type: 'Input',
           name: 'name',
-          label: '类目名称',
+          label: '应用名称',
           required: true,
         },
       ],
     }).open({
-      onSubmit: async () => {
-        axios.post('/codeproject/add', {});
+      onSubmit: async (values) => {
+        await axios.post(
+          initialValues.id ? '/codeproject/update' : '/codeproject/add',
+          {
+            ...initialValues,
+            ...values,
+          },
+        );
+        query();
       },
     });
   };
+  const query = async () => {
+    setSpin(true);
+    const {
+      data: { code, data },
+    } = await axios.post('/codeproject/list', {
+      pageSize: 100,
+    });
+    if (code === 200) {
+      setList(data.data);
+    }
+    setSpin(false);
+  };
+  useEffect(() => {
+    query();
+  }, []);
   return (
-    <div className="app">
-      <div className="app-dashboard">
-        {[
-          {
-            id: 1,
-            name: '算法集',
-            createTime: Date.now(),
-            count: 5,
-          },
-          {
-            id: 2,
-            name: '面试集',
-            createTime: Date.now(),
-            count: 5,
-          },
-          {
-            id: 3,
-            name: '业务组件集',
-            createTime: Date.now(),
-            count: 13,
-          },
-        ].map((item) => {
-          return (
-            <div key={item.id} className="app-dashboard-item">
-              <span>
-                {item.name}&nbsp;&nbsp;({item.count})
-              </span>
-              {new Date(item.createTime).toLocaleString()}
-              <a className="actions" onClick={() => {
-                addOrUpdate(item)
-              }}>修改</a>
-            </div>
-          );
-        })}
-        <div className="app-dashboard-add" onClick={addOrUpdate}>
-          <Icon type="add" size={20} />
+    <Spin spinning={spin}>
+      <div className="app">
+        <div className="app-dashboard">
+          {list.map((item: any) => {
+            return (
+              <div
+                key={item.id}
+                className="app-dashboard-item"
+                onClick={() => {
+                  window.open(`#/component?pid=${item.id}`);
+                }}
+              >
+                <span>{item.name}</span>
+                {new Date(item.createTime).toLocaleString()}
+                <a
+                  className="actions"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addOrUpdate(item);
+                  }}
+                >
+                  修改
+                </a>
+              </div>
+            );
+          })}
+          <div
+            className="app-dashboard-add"
+            onClick={() => {
+              addOrUpdate();
+            }}
+          >
+            <Icon type="add" size={20} />
+          </div>
         </div>
       </div>
-    </div>
+    </Spin>
   );
 };

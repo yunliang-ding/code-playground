@@ -35,7 +35,7 @@ const { open, close } = CreateSpin({
   mode: 'vscode',
 } as any);
 
-const Component = ({ initialDependencies = [], id }) => {
+const Component = ({ initialDependencies = [], id, pid }) => {
   const componentRef: any = useRef({});
   const iframeRef: any = useRef({});
   const stepRef: any = useRef({});
@@ -45,6 +45,7 @@ const Component = ({ initialDependencies = [], id }) => {
       data: { code, data },
     } = await axios.post(value.id ? '/component/update' : '/component/add', {
       ...value,
+      projectId: pid,
       props: JSON.stringify(value.props),
       createTime: undefined,
       updateTime: undefined,
@@ -71,7 +72,9 @@ const Component = ({ initialDependencies = [], id }) => {
         code,
         data: { data },
       },
-    } = await axios('/component/list');
+    } = await axios.post('/component/list', {
+      projectId: pid,
+    });
     componentRef.current.setComponent(
       code === 200
         ? data.map((item) => {
@@ -121,7 +124,7 @@ const Component = ({ initialDependencies = [], id }) => {
               ...dep,
               createTime: undefined,
               updateTime: undefined,
-              projectId: 1,
+              projectId: pid,
             });
             if (code === 200) {
               simpleNotice(`新增脚本${dep.name}成功`);
@@ -139,7 +142,7 @@ const Component = ({ initialDependencies = [], id }) => {
               ...dep,
               createTime: undefined,
               updateTime: undefined,
-              projectId: 1,
+              projectId: pid,
             });
             if (code === 200) {
               simpleNotice(`更新脚本${dep.name}成功`);
@@ -273,7 +276,7 @@ const Component = ({ initialDependencies = [], id }) => {
                     });
                   }
                 } else {
-                  message.error('接口异常!')
+                  message.error('接口异常!');
                 }
               }}
             >
@@ -304,6 +307,7 @@ export default (props) => {
     axios
       .post('/dependencies/list', {
         pageSize: 100,
+        projectId: props.searchParams.pid,
       })
       .then(
         ({
@@ -318,6 +322,10 @@ export default (props) => {
       );
   }, []);
   return spin ? null : (
-    <Component initialDependencies={dependencies} id={props.searchParams.id} />
+    <Component
+      initialDependencies={dependencies}
+      id={props.searchParams.id}
+      pid={props.searchParams.pid}
+    />
   );
 };
