@@ -41,6 +41,9 @@ const Component = ({ initialDependencies = [], id, pid }) => {
   const stepRef: any = useRef({});
   const [loadOver, setLoadOver]: any = useState(false);
   const addOrUpdate = async (value) => {
+    if (localStorage.getItem('__is__root__') === null) {
+      return simpleNotice(`暂无权限`, 'error');
+    }
     const {
       data: { code, data },
     } = await axios.post(value.id ? '/component/update' : '/component/add', {
@@ -118,6 +121,9 @@ const Component = ({ initialDependencies = [], id, pid }) => {
             return await addOrUpdate(value);
           }}
           onAddDep={async (dep) => {
+            if (localStorage.getItem('__is__root__') === null) {
+              return simpleNotice(`暂无权限`, 'error');
+            }
             const {
               data: { code, data },
             } = await axios.post('/dependencies/add', {
@@ -136,6 +142,9 @@ const Component = ({ initialDependencies = [], id, pid }) => {
             return {};
           }}
           onUpdateDep={async (dep) => {
+            if (localStorage.getItem('__is__root__') === null) {
+              return simpleNotice(`暂无权限`, 'error');
+            }
             const {
               data: { code },
             } = await axios.post('/dependencies/update', {

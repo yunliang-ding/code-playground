@@ -65,7 +65,7 @@ export default () => {
                 }}
               >
                 <span>{item.name}</span>
-                {new Date(item.createTime).toLocaleString()}
+                {new Date(item.updateTime).toLocaleString()}
                 <a
                   className="actions"
                   onClick={(e) => {
