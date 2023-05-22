@@ -3,8 +3,9 @@ import axios from '@/axios';
 import './index.less';
 import { useEffect, useState } from 'react';
 import { Spin } from 'antd';
+import Component from '../component';
 
-export default () => {
+export default ({ searchParams }) => {
   const [list, setList] = useState([]);
   const [spin, setSpin] = useState(true);
   const addOrUpdate = async (
@@ -51,41 +52,40 @@ export default () => {
   useEffect(() => {
     query();
   }, []);
+  const [pid, setPid] = useState(searchParams.pid);
   return (
     <Spin spinning={spin}>
-      <div className="app">
-        <div className="app-dashboard">
+      <div className="app-dashboard">
+        <div className="app-dashboard-left">
           {list.map((item: any) => {
             return (
               <div
                 key={item.id}
-                className="app-dashboard-item"
+                className={
+                  item.id === pid
+                    ? 'app-dashboard-left-item-selected'
+                    : 'app-dashboard-left-item'
+                }
                 onClick={() => {
-                  window.open(`#/component?pid=${item.id}`);
+                  history.pushState({}, '', `#/dashboard?pid=${item.id}`);
+                  setPid(item.id);
                 }}
               >
-                <span>{item.name}</span>
-                {new Date(item.updateTime).toLocaleString()}
-                <a
-                  className="actions"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    addOrUpdate(item);
-                  }}
-                >
-                  修改
-                </a>
+                {item.name}
               </div>
             );
           })}
           <div
-            className="app-dashboard-add"
+            className="app-dashboard-left-add"
             onClick={() => {
-              addOrUpdate();
+              // addOrUpdate();
             }}
           >
             <Icon type="add" size={20} />
           </div>
+        </div>
+        <div className="app-dashboard-right">
+          <Component key={pid} searchParams={{ pid }} />
         </div>
       </div>
     </Spin>
