@@ -1,5 +1,5 @@
 import { Redirect } from 'ice';
 
 export default () => {
-  return <Redirect to="/dashboard" />;
+  return <Redirect to="/component" />;
 };

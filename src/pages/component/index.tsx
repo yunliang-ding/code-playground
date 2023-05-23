@@ -167,7 +167,7 @@ const Component = ({ initialDependencies = [], id, pid }) => {
               history.pushState(
                 {},
                 '',
-                `${location.pathname}#/component?id=${item.id}`,
+                `${location.pathname}#/component?pid=${pid}&id=${item.id}`,
               );
             }
             useEffect(() => {
