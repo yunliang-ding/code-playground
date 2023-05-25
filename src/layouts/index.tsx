@@ -26,7 +26,7 @@ export default (props) => {
   useEffect(() => {
     query();
   }, []);
-  const [pid, setPid]: any = useState(new URLSearchParams(props.location.search).get('pid'));
+  const [pid, setPid]: any = useState(new URLSearchParams(props.location.search).get('pid') || 1);
   return (
     <Spin spinning={spin}>
       <div className="app-dashboard">
