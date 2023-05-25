@@ -11,19 +11,19 @@ const interpreter = new Interpreter(window);
 
 /** 渲染逻辑 */
 const RenderApp = ({ data, dependencies }) => {
-  const ComponentApp: any = CloudComponent.parse({
-    codes: [data],
-    require: {
-      'react-core-form': require('react-core-form'),
-      'react-core-form-tools': require('react-core-form-tools'),
-      '@ant-design/icons': AntdIcons,
-      ...dependencies,
-    },
-  })[data.componentName];
   try {
+    const ComponentApp: any = CloudComponent.parse({
+      codes: [data],
+      require: {
+        'react-core-form': require('react-core-form'),
+        'react-core-form-tools': require('react-core-form-tools'),
+        '@ant-design/icons': AntdIcons,
+        ...dependencies,
+      },
+    })[data.componentName];
     if (document.querySelector('.playground-iframe-app')) {
       CloudComponent.render(
-        <ComponentApp {...JSON.parse(data.props)} />,
+        ComponentApp({...JSON.parse(data.props)}),
         document.querySelector('.playground-iframe-app'),
       );
     }
