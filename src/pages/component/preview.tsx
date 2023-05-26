@@ -1,5 +1,5 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
-import { useEffect, useState } from 'react';
+import { Component, useEffect, useState } from 'react';
 import { CloudComponent, babelParseCode, babelParse } from 'react-core-form';
 import { isEmpty } from 'react-core-form-tools';
 import axios from '@/axios';
@@ -8,6 +8,16 @@ import { Interpreter } from 'eval5';
 import './index.less';
 
 const interpreter = new Interpreter(window);
+
+const RenderError = (error) => {
+  CloudComponent.render(
+    <div className="playground-error-info">
+      <div>解析失败:</div>
+      <pre>{String(error)}</pre>
+    </div>,
+    document.querySelector('.playground-iframe-app'),
+  );
+};
 
 /** 渲染逻辑 */
 const RenderApp = ({ data, dependencies }) => {
@@ -22,19 +32,21 @@ const RenderApp = ({ data, dependencies }) => {
       },
     })[data.componentName];
     if (document.querySelector('.playground-iframe-app')) {
+      class ErrorBoundariesWapper extends Component {
+        componentDidCatch(error) {
+          RenderError(error)
+        }
+        render() {
+          return <ComponentApp {...JSON.parse(data.props)} />;
+        }
+      }
       CloudComponent.render(
-        ComponentApp({...JSON.parse(data.props)}),
+        <ErrorBoundariesWapper />,
         document.querySelector('.playground-iframe-app'),
       );
     }
   } catch (error) {
-    CloudComponent.render(
-      <div className="playground-error-info">
-        <div>解析失败:</div>
-        <pre>{String(error)}</pre>
-      </div>,
-      document.querySelector('.playground-iframe-app'),
-    );
+    RenderError(error)
   }
 };
 
