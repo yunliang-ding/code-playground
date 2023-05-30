@@ -1,10 +1,10 @@
-.app-step-logs{
+.app-step-logs {
   background-color: #1e1e1e;
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
-  pre{
+  pre {
     color: #ddd;
     box-shadow: 0px 5px 4px 4px #181818;
     padding: 10px;
@@ -13,5 +13,39 @@
     height: fit-content;
     border-top: none;
     padding-bottom: 0;
+  }
+}
+.login-modal {
+  width: 616px !important;
+  top: 50% !important;
+  transform: translate(0px, -50%);
+  transition: 0s;
+  .ant-modal-confirm-title {
+    h3 {
+      color: #5e5b5b;
+      font-size: 26px;
+      font-weight: 600;
+    }
+    span{
+      color: #5e5b5b;
+    }
+  }
+  .ant-modal-confirm-content {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    .ant-input {
+      height: 36px;
+    }
+    button {
+      height: 48px;
+      width: 120px;
+    }
+  }
+  .ant-modal-confirm-btns {
+    display: none;
+  }
+  .ant-modal-body {
+    padding: 24px;
   }
 }

@@ -2,11 +2,15 @@ import axios from '@/axios';
 import { useEffect, useState } from 'react';
 import { Spin } from 'antd';
 import { useHistory } from 'ice'
+import Login from '@/component/login';
 import './index.less';
 
 export default (props) => {
   if (props.location.pathname === '/component/preview') {
     return props.children;
+  }
+  if(localStorage.getItem('code-playground') === null){
+    return <Login />
   }
   const history = useHistory();
   const [list, setList] = useState([]);
