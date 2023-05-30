@@ -1,7 +1,8 @@
-import instance from '@/axios';
+import { setUser } from '@/util';
 import { Input, Modal } from 'antd';
 import { useEffect, useRef } from 'react';
 import { Button } from 'react-core-form';
+import { isEmpty } from 'react-core-form-tools'
 import './index.less';
 
 export default () => {
@@ -12,8 +13,8 @@ export default () => {
       icon: null,
       title: (
         <div>
-          <h3>Welcome to Code Playground</h3>
-          <span>Please log in below password</span>
+          <h3>欢迎使用 Code Playground</h3>
+          <span>请在下方输入您的昵称</span>
         </div>
       ),
       content: (
@@ -25,22 +26,19 @@ export default () => {
             gap: 10,
           }}
         >
-          <Input.Password placeholder="PASSWORD" ref={inputRef} defaultValue='code-playground' />
+          <Input placeholder="请输入昵称" ref={inputRef} />
           <Button
             spin
-            type="primary"
+            type='primary'
             onClick={async () => {
-              const res = await instance.post('/component/login', {
-                password: inputRef.current.input.value,
-              });
               await new Promise((res) => setTimeout(res, 500));
-              if (res.data.code === 200) {
-                localStorage.setItem('code-playground', '1');
+              if (!isEmpty(inputRef.current.input.value)) {
+                setUser(inputRef.current.input.value);
                 location.reload();
               }
             }}
           >
-            Submit
+            提交
           </Button>
         </div>
       ),

@@ -1,16 +1,18 @@
 import axios from '@/axios';
 import { useEffect, useState } from 'react';
 import { Spin } from 'antd';
-import { useHistory } from 'ice'
+import { useHistory } from 'ice';
 import Login from '@/component/login';
+import { clearUser } from '@/util';
+import { Icon } from 'react-core-form';
 import './index.less';
 
 export default (props) => {
   if (props.location.pathname === '/component/preview') {
     return props.children;
   }
-  if(localStorage.getItem('code-playground') === null){
-    return <Login />
+  if (localStorage.getItem('code-playground-user') === null) {
+    return <Login />;
   }
   const history = useHistory();
   const [list, setList] = useState([]);
@@ -30,7 +32,9 @@ export default (props) => {
   useEffect(() => {
     query();
   }, []);
-  const [pid, setPid]: any = useState(new URLSearchParams(props.location.search).get('pid') || 1);
+  const [pid, setPid]: any = useState(
+    new URLSearchParams(props.location.search).get('pid') || 1,
+  );
   return (
     <Spin spinning={spin}>
       <div className="app-dashboard">
@@ -53,8 +57,19 @@ export default (props) => {
               </div>
             );
           })}
+          <div
+            className="app-dashboard-left-item"
+            style={{ position: 'absolute', bottom: 0 }}
+            onClick={() => {
+              clearUser();
+            }}
+          >
+            <Icon type="setting" size={20} />
+          </div>
         </div>
-        <div className="app-dashboard-right" key={pid}>{props.children}</div>
+        <div className="app-dashboard-right" key={pid}>
+          {props.children}
+        </div>
       </div>
     </Spin>
   );
