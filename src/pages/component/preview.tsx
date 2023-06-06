@@ -20,24 +20,32 @@ const RenderError = (error) => {
 };
 
 /** 渲染逻辑 */
-const RenderApp = ({ data, dependencies }) => {
+const RenderApp = async ({ data, dependencies }) => {
   try {
-    const ComponentApp: any = CloudComponent.parse({
-      codes: [data],
-      require: {
-        'react-core-form': require('react-core-form'),
-        'react-core-form-tools': require('react-core-form-tools'),
-        '@ant-design/icons': AntdIcons,
-        ...dependencies,
-      },
-    })[data.componentName];
+    let VDom: any = null;
+    if (data.componentName.endsWith('.md')) {
+      VDom = await CloudComponent.parseMarkdown(data.react);
+      console.log(VDom);
+    } else {
+      VDom = await CloudComponent.parseReact({
+        componentName: data.componentName,
+        react: data.react,
+        less: data.less,
+        require: {
+          'react-core-form': require('react-core-form'),
+          'react-core-form-tools': require('react-core-form-tools'),
+          '@ant-design/icons': AntdIcons,
+          ...dependencies,
+        },
+      });
+    }
     if (document.querySelector('.playground-iframe-app')) {
       class ErrorBoundariesWapper extends Component {
         componentDidCatch(error) {
-          RenderError(error)
+          RenderError(error);
         }
         render() {
-          return <ComponentApp {...JSON.parse(data.props)} />;
+          return <VDom {...JSON.parse(data.props)} />;
         }
       }
       CloudComponent.render(
@@ -46,7 +54,7 @@ const RenderApp = ({ data, dependencies }) => {
       );
     }
   } catch (error) {
-    RenderError(error)
+    RenderError(error);
   }
 };
 

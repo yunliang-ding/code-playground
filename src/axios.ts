@@ -10,7 +10,6 @@ instance.interceptors.request.use(function (config) {
     ...config.data,
     createUser: config.url === '/codeproject/list' ? undefined : getUser(),
   };
-  console.log(config);
   return config;
 });
 
