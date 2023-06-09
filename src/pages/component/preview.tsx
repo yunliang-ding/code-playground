@@ -24,7 +24,9 @@ const RenderApp = async ({ data, dependencies }) => {
   try {
     let VDom: any = null;
     if (data.componentName.endsWith('.md')) {
-      VDom = await CloudComponent.parseMarkdown(data.react);
+      VDom = await CloudComponent.parseMarkdown({
+        content: data.react
+      });
       console.log(VDom);
     } else {
       VDom = await CloudComponent.parseReact({
