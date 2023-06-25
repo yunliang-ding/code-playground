@@ -9,7 +9,7 @@ import {
 } from 'react-core-form';
 import { downloadFile } from 'react-core-form-tools';
 import { message, notification, Space } from 'antd';
-import axios from '@/axios';
+import { instance } from '@/axios';
 import Step from '@/component/step';
 import * as AntdIcons from '@ant-design/icons';
 import CodeHistory from './code-history';
@@ -43,7 +43,7 @@ const Component = ({ initialDependencies = [], id, pid }) => {
   const addOrUpdate = async (value) => {
     const {
       data: { code, data },
-    } = await axios.post(value.id ? '/component/update' : '/component/add', {
+    } = await instance.post(value.id ? '/component/update' : '/component/add', {
       ...value,
       projectId: pid,
       props: JSON.stringify(value.props),
@@ -72,7 +72,7 @@ const Component = ({ initialDependencies = [], id, pid }) => {
         code,
         data: { data },
       },
-    } = await axios.post('/component/list', {
+    } = await instance.post('/component/list', {
       projectId: pid,
     });
     componentRef.current.setComponent(
@@ -120,7 +120,7 @@ const Component = ({ initialDependencies = [], id, pid }) => {
           onAddDep={async (dep) => {
             const {
               data: { code, data },
-            } = await axios.post('/dependencies/add', {
+            } = await instance.post('/dependencies/add', {
               ...dep,
               createTime: undefined,
               updateTime: undefined,
@@ -138,7 +138,7 @@ const Component = ({ initialDependencies = [], id, pid }) => {
           onUpdateDep={async (dep) => {
             const {
               data: { code },
-            } = await axios.post('/dependencies/update', {
+            } = await instance.post('/dependencies/update', {
               ...dep,
               createTime: undefined,
               updateTime: undefined,
@@ -238,7 +238,7 @@ const Component = ({ initialDependencies = [], id, pid }) => {
               type="primary"
               size="small"
               onClick={async () => {
-                const history: any = await axios.post('/codehistory/list', {
+                const history: any = await instance.post('/codehistory/list', {
                   componentId: componentRef.current.code.id,
                   pageSize: 20,
                 });
@@ -304,7 +304,7 @@ export default (props) => {
   const [dependencies, setDependencies] = useState([]);
   useEffect(() => {
     bodySpin.open();
-    axios
+    instance
       .post('/dependencies/list', {
         pageSize: 100,
         projectId: props.searchParams.pid,

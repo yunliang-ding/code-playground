@@ -2,7 +2,7 @@
 import { Component, useEffect, useState } from 'react';
 import { CloudComponent, babelParseCode, babelParse } from 'react-core-form';
 import { isEmpty } from 'react-core-form-tools';
-import axios from '@/axios';
+import { instance } from '@/axios';
 import * as AntdIcons from '@ant-design/icons';
 import { Interpreter } from 'eval5';
 import './index.less';
@@ -65,12 +65,12 @@ export default ({ searchParams }) => {
   const [dependencies, setDependencies] = useState({});
   // 查询模型
   const search = async () => {
-    const res = await axios.get('/component/detail', {
+    const res = await instance.get('/component/detail', {
       params: {
         id: searchParams.id,
       },
     });
-    const depRes = await axios.post('/dependencies/list', {
+    const depRes = await instance.post('/dependencies/list', {
       pageSize: 100,
     });
     if (depRes.data.code === 200) {
