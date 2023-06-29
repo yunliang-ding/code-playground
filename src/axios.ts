@@ -21,7 +21,7 @@ const interceptorsResponse = (responseConfig) => {
   } = responseConfig;
   if (code === 40005) {
     // 登录信息失效，之后重新登录
-    location.href = `http://121.4.49.147:8360/unification/login?redirect=${location.href}&appId=${APPID}`;
+    location.href = `http://121.4.49.147:9000/unification-login?redirect=${location.href}&appId=${APPID}`;
     return responseConfig;
   }
   if (code !== 200) {

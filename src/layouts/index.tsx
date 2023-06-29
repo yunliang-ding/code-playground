@@ -85,5 +85,5 @@ export default (props) => {
         </div>
       </div>
     </Spin>
-  ): null;
+  ) : null;
 };
