@@ -21,7 +21,7 @@ const interceptorsResponse = (responseConfig) => {
   } = responseConfig;
   if (code === 40005) {
     // 登录信息失效，之后重新登录
-    location.href = `http://121.4.49.147:9000/unification-login?redirect=${location.href}&appId=${APPID}`;
+    location.href = `http://web.yunliang.cloud/unification-login?redirect=${location.href}&appId=${APPID}`;
     return responseConfig;
   }
   if (code !== 200) {
@@ -34,14 +34,14 @@ const interceptorsResponse = (responseConfig) => {
 };
 
 const instance = axios.create({
-  baseURL: 'http://121.4.49.147:8361',
+  baseURL: 'http://online.yunliang.cloud',
   withCredentials: true,
 });
 instance.interceptors.request.use(interceptorsRequest);
 instance.interceptors.response.use(interceptorsResponse);
 
 const instance2 = axios.create({
-  baseURL: 'http://121.4.49.147:8360',
+  baseURL: 'http://server.yunliang.cloud',
   withCredentials: true,
   headers: {
     appId: APPID.toString(),
