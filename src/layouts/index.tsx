@@ -17,7 +17,7 @@ export default (props) => {
   const queryUser = async () => {
     const {
       data: { code, data },
-    } = await instance2.post('/user/info');
+    } = await instance2.post('/user/userinfo');
     if (code === 200) {
       setShow(true);
       setUser(JSON.stringify(data));

@@ -2,7 +2,7 @@ import { notification } from 'antd';
 import { getUser } from './util';
 import axios from 'axios';
 
-const APPID = 1;
+const APPID = 2;
 
 const interceptorsRequest = (requestConfig) => {
   requestConfig.headers = {
@@ -41,7 +41,7 @@ instance.interceptors.request.use(interceptorsRequest);
 instance.interceptors.response.use(interceptorsResponse);
 
 const instance2 = axios.create({
-  baseURL: '/',
+  baseURL: 'http://center.yunliang.cloud',
   withCredentials: true,
   headers: {
     appId: APPID.toString(),
