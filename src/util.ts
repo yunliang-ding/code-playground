@@ -9,7 +9,7 @@ export const getUser = (): any => {
 }
 
 export const clearUser = async () => {
-  await instance2.post('/unification/logout')
+  await instance2.post('/user/logout')
   localStorage.removeItem('code-playground-user');
   location.reload();
 }
