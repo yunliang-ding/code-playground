@@ -1,7 +1,6 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef, useState } from 'react';
 import {
-  CloudComponent,
   Button,
   CreateSpin,
   Icon,
@@ -13,6 +12,7 @@ import { instance } from '@/axios';
 import Step from '@/component/step';
 import * as AntdIcons from '@ant-design/icons';
 import CodeHistory from './code-history';
+import { CloudComponent } from 'react-core-form-code-editor';
 import './index.less';
 
 export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));

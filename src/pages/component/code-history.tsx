@@ -1,4 +1,4 @@
-import { CodeEditor } from 'react-core-form';
+import { CodeEditor } from 'react-core-form-code-editor';
 import { FieldTimeOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 

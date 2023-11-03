@@ -1,10 +1,11 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { Component, useEffect, useState } from 'react';
-import { CloudComponent, babelParseCode, babelParse } from 'react-core-form';
+import { babelParseCode, babelParse } from 'react-core-form-tools';
 import { isEmpty } from 'react-core-form-tools';
 import { instance } from '@/axios';
 import * as AntdIcons from '@ant-design/icons';
 import { Interpreter } from 'eval5';
+import { CloudComponent } from 'react-core-form-code-editor';
 import './index.less';
 
 const interpreter = new Interpreter(window);
