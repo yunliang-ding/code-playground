@@ -12,3 +12,11 @@ declare module '*.module.scss' {
   const classes: { [key: string]: string };
   export default classes;
 }
+
+declare interface Window{
+  less?: any;
+}
+
+declare interface String{
+  replaceAll?: any;
+}

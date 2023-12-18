@@ -2,8 +2,8 @@
 build/
 tests/
 demo/
-.ice/
-
+.lyr/
+app/
 # node 覆盖率文件
 coverage/
 

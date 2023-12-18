@@ -1,29 +1,28 @@
 {
-  "name": "code-playground",
+  "name": "playground",
   "version": "0.0.1",
   "description": "演示台",
+  "scripts": {
+    "start": "lyr dev",
+    "build": "lyr build"
+  },
   "dependencies": {
-    "antd": "4.21.4",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-core-form": "1.0.29",
-    "react-core-form-code-editor": "0.0.1"
+    "axios": "1.6.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "6.21.0",
+    "@arco-design/web-react": "2.57.0",
+    "react-core-form": "2.1.1",
+    "react-core-form-tools": "1.0.1",
+    "react-core-form-code-editor": "1.0.1",
+    "react-fast-marquee": "1.3.2",
+    "nprogress": "^0.2.0",
+    "react-color": "2.19.3"
   },
   "devDependencies": {
-    "@types/react": "^17.0.14",
-    "@types/react-dom": "^17.0.9",
-    "build-plugin-antd": "0.1.4",
-    "build-plugin-load-assets": "0.1.3",
-    "eslint": "^7.30.0",
-    "ice.js": "^2.0.0",
-    "stylelint": "^13.1.0"
-  },
-  "scripts": {
-    "start": "icejs start --disable-open --mode local",
-    "build:daily": "icejs build --mode daily",
-    "build": "icejs build --mode prod",
-    "lint": "npm run eslint && npm run stylelint",
-    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
-    "stylelint": "stylelint ./**/*.scss"
+    "lyr-cli": "^0.0.9",
+    "typescript": "5.3.2",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
   }
 }
