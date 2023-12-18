@@ -1,4 +1,4 @@
-import { instance2 } from "./axios";
+import { request } from "./axios";
 import { Icon as ArcoIcon } from '@arco-design/web-react';
 
 export const setUser = (user: string) => {
@@ -10,7 +10,7 @@ export const getUser = (): any => {
 }
 
 export const clearUser = async () => {
-  await instance2.post('/user/logout')
+  await request.post('/user/logout')
   localStorage.removeItem('code-playground-user');
   location.reload();
 }

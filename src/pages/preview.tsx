@@ -1,11 +1,9 @@
-/* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { Component, useEffect, useState } from 'react';
 import { babelParseCode, babelParse } from 'react-core-form-tools';
 import { isEmpty } from 'react-core-form-tools';
 import { instance } from '@/axios';
-import * as AntdIcons from '@ant-design/icons';
 import { Interpreter } from 'eval5';
-import { CloudComponent } from 'react-core-form-code-editor';
+import CloudComponent from '@/cloud-component';
 import './index.less';
 
 const interpreter = new Interpreter(window);
@@ -26,7 +24,7 @@ const RenderApp = async ({ data, dependencies }) => {
     let VDom: any = null;
     if (data.componentName.endsWith('.md')) {
       VDom = await CloudComponent.parseMarkdown({
-        content: data.react
+        content: data.react,
       });
       console.log(VDom);
     } else {
@@ -35,9 +33,9 @@ const RenderApp = async ({ data, dependencies }) => {
         react: data.react,
         less: data.less,
         require: {
-          'react-core-form': require('react-core-form'),
-          'react-core-form-tools': require('react-core-form-tools'),
-          '@ant-design/icons': AntdIcons,
+          '@arco-design/web-react': window.arco,
+          '@arco-design/web-react/icon': window.arcoicon,
+          'react-core-form': window.ReactCoreForm,
           ...dependencies,
         },
       });

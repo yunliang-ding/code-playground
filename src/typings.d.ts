@@ -15,6 +15,9 @@ declare module '*.module.scss' {
 
 declare interface Window{
   less?: any;
+  arco?: any;
+  arcoicon?: any;
+  ReactCoreForm?: any;
 }
 
 declare interface String{

@@ -1,6 +1,6 @@
-import { CodeEditor } from 'react-core-form-code-editor';
-import { FieldTimeOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+import { CodeEditor } from 'react-core-form-code-editor';
+import { IconFindReplace } from '@arco-design/web-react/icon';
 
 export default ({ historys }) => {
   const [code, setCode]: any = useState(historys[0]);
@@ -20,7 +20,7 @@ export default ({ historys }) => {
                   : 'code-history-left-item'
               }
             >
-              <FieldTimeOutlined style={{ color: '#1890ff' }} />
+              <IconFindReplace style={{ color: '#1890ff' }} />
               {new Date(item.createTime).toLocaleString()}
             </div>
           );

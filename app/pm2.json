@@ -1,8 +1,8 @@
 {
   "apps": [{
-    "name": "crud-model:7500",
+    "name": "crud-model:7600",
     "script": "production.js",
-    "cwd": "/home/lighthouse/local/crud-model/app",
+    "cwd": "/home/lighthouse/local/code-playground/app",
     "exec_mode": "fork",
     "max_memory_restart": "100M",
     "autorestart": true,

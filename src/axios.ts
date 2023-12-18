@@ -1,21 +1,31 @@
-import { notification } from 'antd';
 import { getUser } from './util';
 import axios from 'axios';
+import { Notification } from '@arco-design/web-react';
+import NProgress from 'nprogress';
+import "nprogress/nprogress.css";
+
+NProgress.configure({
+  showSpinner: false,
+  minimum: 0.3,
+  easing: 'ease-in-out',
+});
 
 const APPID = 2;
 
-const interceptorsRequest = (requestConfig) => {
+export const interceptorsRequest = (requestConfig) => {
+  NProgress.start();
   requestConfig.headers = {
     appId: APPID.toString(),
   };
   requestConfig.data = {
     ...requestConfig.data,
-    createUser: requestConfig.url === '/codeproject/list' ? 1 : getUser()?.id,
+    createUser: getUser()?.id,
   };
   return requestConfig;
 };
 
-const interceptorsResponse = (responseConfig) => {
+export const interceptorsResponse = (responseConfig) => {
+  NProgress.done();
   const {
     data: { code, msg },
   } = responseConfig;
@@ -25,9 +35,9 @@ const interceptorsResponse = (responseConfig) => {
     return responseConfig;
   }
   if (code !== 200) {
-    notification.error({
-      message: '提示',
-      description: msg || '接口异常',
+    Notification.error({
+      title: '提示',
+      content: msg || '接口异常',
     });
   }
   return responseConfig;
@@ -40,14 +50,14 @@ const instance = axios.create({
 instance.interceptors.request.use(interceptorsRequest);
 instance.interceptors.response.use(interceptorsResponse);
 
-const instance2 = axios.create({
-  baseURL: 'http://center.yunliang.cloud',
+const request = axios.create({
+  baseURL: '/',
   withCredentials: true,
   headers: {
     appId: APPID.toString(),
   },
 });
-instance2.interceptors.request.use(interceptorsRequest);
-instance2.interceptors.response.use(interceptorsResponse);
+request.interceptors.request.use(interceptorsRequest);
+request.interceptors.response.use(interceptorsResponse);
 
-export { instance, instance2 };
+export { instance, request };

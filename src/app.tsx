@@ -1,21 +1,19 @@
-/* eslint-disable no-console */
-/* eslint-disable no-param-reassign */
-/* eslint-disable prefer-promise-reject-errors */
-import { runApp } from 'ice';
+import { runApp } from 'lyr';
+import Loading from '@/component/loading';
+import { userInfo } from './services';
 
-const appConfig: any = {
-  app: {
-    rootId: 'ice-container',
-    // 是否开启 ErrorBoundary，默认为 false
-    errorBoundary: true,
-    // 自定义错误的处理事件
-    onErrorBoundaryHander: (error: Error, componentStack: string) => {
-      console.log('onErrorBoundaryHander', error, componentStack);
-    },
+runApp({
+  /** 节点 */
+  element: '#root',
+  /** loading */
+  loading: () => <Loading />,
+  /** 加载勾子 */
+  getInitData: async () => {
+    // 查询 userInfo 获取详细信息
+    const { data }: any = await userInfo();
+    return {
+      auth: [],
+      userInfo: data,
+    };
   },
-  router: {
-    type: 'hash',
-    fallback: <div>loading...</div>,
-  },
-};
-runApp(appConfig);
+});
