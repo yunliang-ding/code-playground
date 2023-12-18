@@ -22,7 +22,7 @@ const RenderError = (error) => {
 const RenderApp = async ({ data, dependencies }) => {
   try {
     let VDom: any = null;
-    if (data.componentName.endsWith('.md')) {
+    if (data.componentName?.endsWith('.md')) {
       VDom = await CloudComponent.parseMarkdown({
         content: data.react,
       });

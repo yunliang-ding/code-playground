@@ -9,14 +9,15 @@ import CloudComponent from '@/cloud-component';
 import Loading from '@/component/loading';
 import CodeHistory from './component/code-history';
 import { IconLaunch, IconRefresh } from '@arco-design/web-react/icon';
+import { useSearchParams } from 'react-router-dom';
 import './index.less';
 
 export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
 
 export const simpleNotice = (text: string, type = 'success') => {
   Notification[type]({
-    message: '提示',
-    description: text,
+    title: '提示',
+    content: text,
     placement: 'bottomRight',
   });
 };
@@ -47,7 +48,6 @@ const Component = ({ initialDependencies = [], id }) => {
       simpleNotice(`组件(${value.componentName})保存失败`, 'error');
     }
     iframeRef.current?.contentWindow?.location?.reload?.();
-    open();
     return data;
   };
   const list = async () => {
@@ -133,14 +133,11 @@ const Component = ({ initialDependencies = [], id }) => {
             return false;
           }}
           previewRender={(item) => {
-            (document as any).title = `${item.componentName}-Code-PlayGround`;
+            (document as any).title = `${item.componentName}-PlayGround`;
             const url = `${location.origin}${location.pathname}#/preview?id=${item.id}`;
             if (item) {
               history.pushState({}, '', `${location.pathname}#/?id=${item.id}`);
             }
-            useEffect(() => {
-              open();
-            }, []);
             return (
               <div className="app-preview">
                 <div className="preview-address">
@@ -149,7 +146,6 @@ const Component = ({ initialDependencies = [], id }) => {
                     <IconRefresh
                       onClick={() => {
                         iframeRef.current.contentWindow.location.reload();
-                        open();
                       }}
                     />
                     <IconLaunch
@@ -258,8 +254,9 @@ const Component = ({ initialDependencies = [], id }) => {
   );
 };
 
-export default (props) => {
+export default () => {
   const [spin, setSpin] = useState(true);
+  const [searchParams] = useSearchParams();
   const [dependencies, setDependencies] = useState([]);
   useEffect(() => {
     instance
@@ -280,6 +277,6 @@ export default (props) => {
   return spin ? (
     <Loading />
   ) : (
-    <Component initialDependencies={dependencies} id={props.searchParams.id} />
+    <Component initialDependencies={dependencies} id={searchParams.get('id')} />
   );
 };

@@ -23,9 +23,8 @@ export default () => {
   }, []);
   return show ? (
     <Spin loading={spin}>
-      <div className="app-dashboard">
-        <div className="app-dashboard-left">Left</div>
-        <div className="app-dashboard-right">
+      <div className="playground show-file-icons">
+        <div className="playground-body">
           <Outlet />
         </div>
       </div>

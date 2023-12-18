@@ -17,7 +17,7 @@ export const clearUser = async () => {
 /**
  * iconUrl
  */
-export const iconUrl = '//at.alicdn.com/t/c/font_3520199_pheco7nb3xf.js';
+export const iconUrl = '//at.alicdn.com/t/c/font_3520199_8pqgh2laafv.js';
 
 /**
  * icon

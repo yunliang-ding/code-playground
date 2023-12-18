@@ -1,7 +1,7 @@
 import { Button } from 'react-core-form';
 import { Message, Upload } from '@arco-design/web-react';
 import { downloadFile } from 'react-core-form-tools';
-import { IconClose, IconFile } from '@arco-design/web-react/icon';
+import { IconClose } from '@arco-design/web-react/icon';
 
 export default ({
   component,
@@ -19,17 +19,17 @@ export default ({
             item.open &&
             [
               {
-                icon: <IconFile />,
+                icon: <i className="file-icon javascript-lang-file-icon" />,
                 name: 'index.js',
                 content: item.react,
               },
               {
-                icon: <IconFile />,
+                icon: <i className="file-icon less-lang-file-icon" />,
                 name: 'index.less',
                 content: item.less,
               },
               {
-                icon: <IconFile />,
+                icon: <i className="file-icon json-lang-file-icon" />,
                 name: 'props.json',
                 content: item.meta,
               },

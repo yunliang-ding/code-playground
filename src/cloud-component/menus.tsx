@@ -1,10 +1,11 @@
 /* eslint-disable require-atomic-updates */
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { isEmpty } from 'react-core-form-tools';
-import { useState } from 'react';
 import Dependencies from './dependencies';
 import { IconRender } from './main';
 import { IconPlus } from '@arco-design/web-react/icon';
+import { CreateModal } from 'react-core-form';
+import { Message } from '@arco-design/web-react';
 
 const reactStr = `import { Button } from '@arco-design/web-react';
 
@@ -40,27 +41,11 @@ export default ({
   onAddDep,
   onUpdateDep,
 }) => {
-  const [err, setErr] = useState('');
-  const rule = ({ target }) => {
-    const { value } = target;
-    if (/\s+/.test(value)) {
-      setErr('文件名称不能包含空格');
-    } else if (/[\u4E00-\u9FA5]/.test(value)) {
-      setErr('文件名称不能有中文');
-    } else if (/^\d+$/.test(value)) {
-      setErr('文件名称不能以数字开头');
-    } else if (
-      component.some((comp) => comp.componentName === value && !isEmpty(value))
-    ) {
-      setErr('文件已存在');
-    } else {
-      setErr('');
-    }
-  };
-  const addComponent = async (componentName: string, item, index) => {
+  const addComponent = async (componentName: string) => {
+    const item: any = {};
     if (!isEmpty(componentName)) {
       item.componentName = componentName;
-      if (componentName.endsWith('md')) {
+      if (componentName.endsWith('.md')) {
         item.react = markdownStr;
       } else {
         item.react = reactStr.replaceAll('{componentName}', componentName);
@@ -76,45 +61,71 @@ export default ({
       });
       item.selected = true;
       item.open = true;
-      open();
       try {
         item.id = await onAdd(item); // 获取id
         if (item.id === undefined) {
-          return setErr('文件保存失败');
+          Message.error('文件保存失败');
+        } else {
+          item.selectedTab = 'index.js'; // 默认选中 js
         }
-        item.selectedTab = 'index.js'; // 默认选中 js
-        delete item.state;
       } catch (error) {
         console.log(error);
       } finally {
         close();
       }
-    } else {
-      component.splice(index, 1);
+      return item;
     }
-    setComponent([...component]);
   };
-
   return (
     <div className="cloud-component-left">
       <div className="cloud-component-left-header">
-        <span>组件列表</span>
+        <span>我的组件</span>
         <IconPlus
           onClick={() => {
-            if (component.some((i) => i.state === 'edit')) {
-              return;
-            }
-            component.push({
-              componentName: '',
-              state: 'edit',
-              props: {},
+            CreateModal({
+              title: '添加组件',
+              height: 100,
+              schema: [
+                {
+                  type: 'Input',
+                  name: 'name',
+                  label: '组件名',
+                  required: true,
+                  rules: [
+                    {
+                      async validator(value, callback) {
+                        if (/\s+/.test(value)) {
+                          callback('文件名称不能包含空格');
+                        } else if (/[\u4E00-\u9FA5]/.test(value)) {
+                          callback('文件名称不能有中文');
+                        } else if (/^\d+$/.test(value)) {
+                          callback('文件名称不能以数字开头');
+                        } else if (
+                          component.some(
+                            (item) =>
+                              item.componentName === value && !isEmpty(value),
+                          )
+                        ) {
+                          callback('文件已存在');
+                        } else {
+                          Promise.resolve();
+                        }
+                      },
+                    },
+                  ],
+                },
+              ],
+            }).open({
+              async onSubmit(values) {
+                const item = await addComponent(values.name);
+                setComponent([item, ...component])
+              },
             });
-            setComponent([...component]);
           }}
         />
       </div>
       <div className="cloud-component-left-body">
-        {component.map((item, index) => {
+        {component.map((item) => {
           return (
             <div
               key={item.componentName}
@@ -125,67 +136,25 @@ export default ({
               }
             >
               <span style={{ marginRight: 4, display: 'flex' }}>
-                <IconRender
-                  componentName={item.componentName}
-                  color="#1890ff"
-                />
+                <IconRender componentName={item.componentName} />
               </span>
-              <span
-                style={{ position: 'relative' }}
-                className={err ? 'error-span' : ''}
-              >
-                {item.state === 'edit' ? (
-                  <>
-                    <input
-                      onBlur={(e) => {
-                        !err && addComponent(e.target.value, item, index);
-                      }}
-                      onChange={rule}
-                      onKeyDown={(e: any) => {
-                        if (e.key === 'Enter') {
-                          !err && addComponent(e.target.value, item, index);
-                        }
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      autoFocus
-                      defaultValue={item.componentName}
-                      style={{
-                        background: '#333',
-                        border: 'none',
-                        width: 'calc(100% + 28px)',
-                        height: 18,
-                        outline: '1px solid #1890ff',
-                        color: '#fff',
-                      }}
-                    />
-                    {item.state === 'edit' && (
-                      <div className="cloud-component-left-body-input-error">
-                        {err}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <div
-                    style={{ width: 180 }}
-                    onClick={async () => {
-                      setComponent(
-                        component.map((i: any) => {
-                          return {
-                            ...i,
-                            open: i.componentName === item.componentName, // 兼容bug, 改成单开模式
-                            // i.open ||
-                            // i.componentName === item.componentName,
-                            selected: i.componentName === item.componentName,
-                          };
-                        }),
-                      );
-                    }}
-                  >
-                    {item.componentName}
-                  </div>
-                )}
+              <span style={{ position: 'relative' }}>
+                <div
+                  style={{ width: 180 }}
+                  onClick={async () => {
+                    setComponent(
+                      component.map((i: any) => {
+                        return {
+                          ...i,
+                          open: i.componentName === item.componentName, // 兼容bug, 改成单开模式
+                          selected: i.componentName === item.componentName,
+                        };
+                      }),
+                    );
+                  }}
+                >
+                  {item.componentName}
+                </div>
               </span>
             </div>
           );
