@@ -61,7 +61,7 @@ const Component = ({ initialDependencies = [], id }) => {
     setTimeout(() => {
       componentRef.current.setComponent(
         code === 200
-          ? data.map((item) => {
+          ? data.reverse().map((item) => {
               return {
                 ...item,
                 open: String(item.id) === id,

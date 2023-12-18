@@ -24,7 +24,7 @@
       overflow: auto;
       overflow-x: hidden;
       &::-webkit-scrollbar {
-        width: 10px; /* 滚动条宽度， width：对应竖滚动条的宽度  height：对应横滚动条的高度*/
+        width: 10px;
         height: 4px;
         border-radius: 0px;
         background: rgba(0, 0, 0, 0.1);
@@ -151,6 +151,17 @@
   &-assets {
     overflow: auto;
     height: 160px;
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 4px;
+      border-radius: 0px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 0px;
+      height: 100px; /* 滚动条滑块长度 */
+      background: rgba(255, 255, 255, 0.1);
+    }
     &-files {
       &-file {
         height: 22px;

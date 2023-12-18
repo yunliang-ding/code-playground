@@ -1,6 +1,6 @@
 /** 资源包 */
 import { CreateDrawer, SchemaProps } from 'react-core-form';
-import { IconPlus, IconFile } from '@arco-design/web-react/icon';
+import { IconPlus } from '@arco-design/web-react/icon';
 import { CodeEditor } from 'react-core-form-code-editor';
 
 const schema = [
@@ -110,6 +110,7 @@ export default ({ dependencies, setDependencies, onAddDep, onUpdateDep }) => {
         paddingBottom: 0,
         paddingTop: 16,
       },
+      placement: 'left',
     },
     initialValues: {
       type: 'javascript',
@@ -172,7 +173,7 @@ export default ({ dependencies, setDependencies, onAddDep, onUpdateDep }) => {
                   });
                 }}
               >
-                <IconFile />
+                <i className="file-icon javascript-lang-file-icon" />
                 <span style={{ color: '#ddd' }}>{item.name}</span>
               </div>
             );
