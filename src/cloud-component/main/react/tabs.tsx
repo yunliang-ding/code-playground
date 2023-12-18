@@ -118,8 +118,6 @@ export default ({
                 }
               } catch (err: any) {
                 Message.warning(err);
-              } finally {
-                close();
               }
             }
           }}

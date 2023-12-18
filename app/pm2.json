@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "crud-model:7600",
+    "name": "playground:7600",
     "script": "production.js",
     "cwd": "/home/lighthouse/local/code-playground/app",
     "exec_mode": "fork",

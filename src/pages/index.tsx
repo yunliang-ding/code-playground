@@ -163,7 +163,6 @@ const Component = ({ initialDependencies = [], id }) => {
                   src={url}
                   onLoad={async () => {
                     await sleep();
-                    close();
                   }}
                 />
               </div>
