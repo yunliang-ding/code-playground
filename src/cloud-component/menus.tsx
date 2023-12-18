@@ -34,8 +34,6 @@ export default ({
   component,
   setComponent,
   onAdd,
-  close,
-  open,
   dependencies,
   setDependencies,
   onAddDep,
@@ -70,8 +68,6 @@ export default ({
         }
       } catch (error) {
         console.log(error);
-      } finally {
-        close();
       }
       return item;
     }
@@ -81,6 +77,7 @@ export default ({
       <div className="cloud-component-left-header">
         <span>我的组件</span>
         <IconPlus
+          style={{ cursor: 'pointer' }}
           onClick={() => {
             CreateModal({
               title: '添加组件',
@@ -118,7 +115,7 @@ export default ({
             }).open({
               async onSubmit(values) {
                 const item = await addComponent(values.name);
-                setComponent([item, ...component])
+                setComponent([item, ...component]);
               },
             });
           }}

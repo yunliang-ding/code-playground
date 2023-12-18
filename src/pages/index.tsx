@@ -16,9 +16,8 @@ export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
 
 export const simpleNotice = (text: string, type = 'success') => {
   Notification[type]({
-    title: '提示',
     content: text,
-    placement: 'bottomRight',
+    position: 'bottomRight',
   });
 };
 
@@ -58,18 +57,21 @@ const Component = ({ initialDependencies = [], id }) => {
         data: { data },
       },
     } = await instance.post('/component/list');
-    componentRef.current.setComponent(
-      code === 200
-        ? data.map((item) => {
-            return {
-              ...item,
-              open: String(item.id) === id,
-              selected: String(item.id) === id,
-              props: JSON.parse(item.props),
-            };
-          })
-        : [],
-    );
+    // 延迟下不然打不开编辑器??
+    setTimeout(() => {
+      componentRef.current.setComponent(
+        code === 200
+          ? data.map((item) => {
+              return {
+                ...item,
+                open: String(item.id) === id,
+                selected: String(item.id) === id,
+                props: JSON.parse(item.props),
+              };
+            })
+          : [],
+      );
+    }, 1000);
     await sleep();
     stepRef.current.updateLogs('组件列表加载完毕..');
   };

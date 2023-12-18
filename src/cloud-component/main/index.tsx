@@ -45,5 +45,5 @@ export const IconRender = ({ componentName }) => {
   if (componentName?.endsWith('.md')) {
     return <i className="file-icon markdown-lang-file-icon" />;
   }
-  return <i className="file-icon javascript-lang-file-icon" />;
+  return <i className="file-icon javascriptreact-lang-file-icon" />;
 };

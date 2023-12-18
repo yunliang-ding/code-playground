@@ -112,16 +112,11 @@ const CloudComponent = ({
   }, [dependencies]);
   // 保存
   const save = async () => {
-    open();
-    try {
-      await new Promise((res) => setTimeout(res, 500));
-      await onSave(
-        component.find((i) => i.selected),
-        _require,
-      );
-    } finally {
-      close();
-    }
+    await new Promise((res) => setTimeout(res, 500));
+    await onSave(
+      component.find((i) => i.selected),
+      _require,
+    );
   };
   // Ctrl + S
   const keyboardEvent = async (e) => {
@@ -136,8 +131,6 @@ const CloudComponent = ({
   useEffect(() => {
     // 更新 ref Api
     componentRef.current = {
-      openSpin: open,
-      closeSpin: close,
       component,
       setComponent,
       code: component.find((i) => i.selected),
@@ -155,8 +148,6 @@ const CloudComponent = ({
         component={component}
         setComponent={setComponent}
         onAdd={onAdd}
-        close={close}
-        open={open}
         dependencies={dependencies}
         setDependencies={setDependencies}
         onAddDep={onAddDep}

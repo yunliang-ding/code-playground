@@ -1,4 +1,4 @@
-import { IconFile, IconClose } from '@arco-design/web-react/icon';
+import { IconClose } from '@arco-design/web-react/icon';
 
 export default ({ component, setComponent }) => {
   return (
@@ -9,7 +9,7 @@ export default ({ component, setComponent }) => {
             item.open &&
             [
               {
-                icon: <IconFile color="#1890ff" />,
+                icon: <i className="file-icon markdown-lang-file-icon" />,
                 name: item.componentName,
                 content: item.react,
               },

@@ -4,6 +4,7 @@ import { isEmpty } from 'react-core-form-tools';
 import { instance } from '@/axios';
 import { Interpreter } from 'eval5';
 import CloudComponent from '@/cloud-component';
+import { useSearchParams } from 'react-router-dom';
 import './index.less';
 
 const interpreter = new Interpreter(window);
@@ -59,14 +60,15 @@ const RenderApp = async ({ data, dependencies }) => {
   }
 };
 
-export default ({ searchParams }) => {
+export default () => {
+  const [searchParams] = useSearchParams();
   const [data, setData] = useState({});
   const [dependencies, setDependencies] = useState({});
   // 查询模型
   const search = async () => {
     const res = await instance.get('/component/detail', {
       params: {
-        id: searchParams.id,
+        id: searchParams.get('id'),
       },
     });
     const depRes = await instance.post('/dependencies/list', {
@@ -108,7 +110,7 @@ export default ({ searchParams }) => {
     }
   };
   useEffect(() => {
-    if (searchParams.id) {
+    if (searchParams.get('id')) {
       search();
     }
   }, []);

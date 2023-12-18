@@ -73,6 +73,7 @@ export default ({
         })}
       </div>
       <div style={{ display: 'flex', gap: 10 }}>
+        {extra}
         <Button
           spin
           type="primary"
@@ -93,7 +94,9 @@ export default ({
               open();
               await new Promise((res) => setTimeout(res, 1000));
               try {
-                const jsonArr = JSON.parse(await (file.originFile as any).text());
+                const jsonArr = JSON.parse(
+                  await (file.originFile as any).text(),
+                );
                 if (Array.isArray(jsonArr)) {
                   // 去重
                   jsonArr.forEach((jsonItem) => {
@@ -125,7 +128,6 @@ export default ({
             导入
           </Button>
         </Upload>
-        {extra}
       </div>
     </div>
   );
