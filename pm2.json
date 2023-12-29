@@ -2,7 +2,7 @@
   "apps": [{
     "name": "playground:7600",
     "script": "production.js",
-    "cwd": "/home/lighthouse/local/code-playground/app",
+    "cwd": "./",
     "exec_mode": "fork",
     "max_memory_restart": "100M",
     "autorestart": true,
