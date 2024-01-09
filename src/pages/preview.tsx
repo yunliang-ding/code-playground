@@ -1,6 +1,6 @@
 import { Component, useEffect, useState } from 'react';
-import { babelParseCode, babelParse } from 'react-core-form-tools';
-import { isEmpty } from 'react-core-form-tools';
+import { babelParseCode, babelParse } from 'lyr-extra';
+import { isEmpty } from 'lyr-extra';
 import { instance } from '@/axios';
 import { Interpreter } from 'eval5';
 import CloudComponent from '@/cloud-component';
@@ -36,7 +36,7 @@ const RenderApp = async ({ data, dependencies }) => {
         require: {
           '@arco-design/web-react': window.arco,
           '@arco-design/web-react/icon': window.arcoicon,
-          'react-core-form': window.ReactCoreForm,
+          'lyr-design': window.ReactCoreForm,
           ...dependencies,
         },
       });

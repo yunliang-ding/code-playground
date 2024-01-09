@@ -10,7 +10,7 @@ import {
   babelParse,
   babelParseCode,
   MarkdownViewer,
-} from 'react-core-form-tools';
+} from 'lyr-extra';
 import { Interpreter } from 'eval5';
 import Main, { injectStyle } from './main';
 import Menus from './menus';

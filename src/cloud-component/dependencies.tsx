@@ -1,7 +1,7 @@
 /** 资源包 */
-import { CreateDrawer, SchemaProps } from 'react-core-form';
+import { CreateDrawer, SchemaProps } from 'lyr-design';
 import { IconPlus } from '@arco-design/web-react/icon';
-import { CodeEditor } from 'react-core-form-code-editor';
+import { CodeEditor } from 'lyr-code-editor';
 
 const schema = [
   {

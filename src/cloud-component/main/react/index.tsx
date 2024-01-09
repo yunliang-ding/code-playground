@@ -1,5 +1,5 @@
 import React from 'react';
-import { CodeEditor } from 'react-core-form-code-editor';
+import { CodeEditor } from 'lyr-code-editor';
 import Tabs from './tabs';
 
 const Container = ({ selectedTab, item, require, previewRender }) => {

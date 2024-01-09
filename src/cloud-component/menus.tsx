@@ -1,10 +1,10 @@
 /* eslint-disable require-atomic-updates */
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
-import { isEmpty } from 'react-core-form-tools';
+import { isEmpty } from 'lyr-extra';
 import Dependencies from './dependencies';
 import { IconRender } from './main';
 import { IconPlus } from '@arco-design/web-react/icon';
-import { CreateModal } from 'react-core-form';
+import { CreateModal } from 'lyr-design';
 import { Message } from '@arco-design/web-react';
 
 const reactStr = `import { Button } from '@arco-design/web-react';

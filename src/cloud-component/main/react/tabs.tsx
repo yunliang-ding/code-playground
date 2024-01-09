@@ -1,6 +1,6 @@
-import { Button } from 'react-core-form';
+import { Button } from 'lyr-design';
 import { Message, Upload } from '@arco-design/web-react';
-import { downloadFile } from 'react-core-form-tools';
+import { downloadFile } from 'lyr-extra';
 import { IconClose } from '@arco-design/web-react/icon';
 
 export default ({

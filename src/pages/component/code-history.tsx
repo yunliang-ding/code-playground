@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CodeEditor } from 'react-core-form-code-editor';
+import { CodeEditor } from 'lyr-code-editor';
 import { IconFindReplace } from '@arco-design/web-react/icon';
 
 export default ({ historys }) => {
