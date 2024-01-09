@@ -25,7 +25,8 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/aliyun-oss-sdk.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js"
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js"
   ],
   buildScript: [
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.production.min.js',
@@ -43,6 +44,7 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/aliyun-oss-sdk.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js"
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js",
+    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js"
   ],
 });
