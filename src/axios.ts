@@ -15,7 +15,7 @@ const APPID = 2;
 export const interceptorsRequest = (requestConfig) => {
   NProgress.start();
   requestConfig.headers = {
-    appId: APPID.toString(),
+    token: localStorage.getItem("token"),
   };
   requestConfig.data = {
     ...requestConfig.data,
@@ -45,16 +45,17 @@ export const interceptorsResponse = (responseConfig) => {
 
 const instance = axios.create({
   baseURL: 'http://api-online.yunliang.cloud',
-  withCredentials: true,
+  headers: {
+    token: localStorage.getItem("token"),
+  },
 });
 instance.interceptors.request.use(interceptorsRequest);
 instance.interceptors.response.use(interceptorsResponse);
 
 const request = axios.create({
   baseURL: '/',
-  withCredentials: true,
   headers: {
-    appId: APPID.toString(),
+    token: localStorage.getItem("token"),
   },
 });
 request.interceptors.request.use(interceptorsRequest);

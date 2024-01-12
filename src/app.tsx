@@ -9,6 +9,16 @@ runApp({
   loading: () => <Loading />,
   /** 加载勾子 */
   getInitData: async () => {
+    /** 处理统一登录回跳逻辑 */
+    const { pathname, search, hash } = location;
+    const urlSearchParams = new URLSearchParams(search);
+    const token = urlSearchParams.get('token');
+    if (token) {
+      localStorage.setItem('token', token);
+      urlSearchParams.delete('token');
+      const newSearch = urlSearchParams.toString();
+      history.replaceState({}, '', `${pathname}${newSearch}${hash}`); // 地址重新刷一下
+    }
     // 查询 userInfo 获取详细信息
     document.body.setAttribute('arco-theme', 'dark'); // 黑色主题
     const { data }: any = await userInfo();
