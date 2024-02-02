@@ -16,7 +16,20 @@ export default ({ stepRef = useRef({}) }: any) => {
       <pre>
         <Spin loading />
         {logs.reverse().map((log) => {
-          return <p key={log} style={{color: log.includes('失败') ? '#e54e50' : log.includes('成功') ? '#4b9626' : '#888'}}>{log}</p>;
+          return (
+            <p
+              key={log}
+              style={{
+                color: log.includes('失败')
+                  ? '#e54e50'
+                  : log.includes('成功')
+                  ? '#4b9626'
+                  : '#888',
+              }}
+            >
+              {log}
+            </p>
+          );
         })}
       </pre>
     </div>

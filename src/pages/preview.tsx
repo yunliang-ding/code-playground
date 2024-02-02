@@ -36,7 +36,7 @@ const RenderApp = async ({ data, dependencies }) => {
         require: {
           '@arco-design/web-react': window.arco,
           '@arco-design/web-react/icon': window.arcoicon,
-          'lyr-design': window.ReactCoreForm,
+          'lyr-design': window.lyr,
           ...dependencies,
         },
       });

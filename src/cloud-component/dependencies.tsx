@@ -3,6 +3,12 @@ import { CreateDrawer, SchemaProps } from 'lyr-design';
 import { IconPlus } from '@arco-design/web-react/icon';
 import { CodeEditor } from 'lyr-code-editor';
 
+const iconMapping = {
+  'less': "javascript-lang-file-icon",
+  'javascript': "javascript-lang-file-icon",
+  'react': "javascriptreact-lang-file-icon"
+}
+
 const schema = [
   {
     type: 'Input',
@@ -173,7 +179,7 @@ export default ({ dependencies, setDependencies, onAddDep, onUpdateDep }) => {
                   });
                 }}
               >
-                <i className="file-icon javascript-lang-file-icon" />
+                <i className={`file-icon ${iconMapping[item.type]}`} />
                 <span style={{ color: '#ddd' }}>{item.name}</span>
               </div>
             );

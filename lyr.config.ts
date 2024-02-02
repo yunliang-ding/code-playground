@@ -2,8 +2,7 @@ import { defineConfig } from 'lyr';
 
 export default defineConfig({
   title: 'Code-Playground',
-  favicon:
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/assets/favicon.ico',
+  favicon: 'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/assets/favicon.ico',
   link: [
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.css',
@@ -25,8 +24,9 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/aliyun-oss-sdk.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js",
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js"
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js',
   ],
   buildScript: [
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.production.min.js',
@@ -44,7 +44,15 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/aliyun-oss-sdk.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js",
-    "https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js"
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js',
   ],
+  webpackConfig: () => {
+    return {
+      externals: {
+        eval5: 'eval5',
+      },
+    };
+  },
 });

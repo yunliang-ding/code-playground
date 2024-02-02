@@ -87,7 +87,7 @@ const Component = ({ initialDependencies = [], id }) => {
           require={{
             '@arco-design/web-react': window.arco,
             '@arco-design/web-react/icon': window.arcoicon,
-            'lyr-design': window.ReactCoreForm,
+            'lyr-design': window.lyr,
           }}
           onSave={addOrUpdate}
           onLog={async (info) => {

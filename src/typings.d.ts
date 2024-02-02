@@ -17,7 +17,8 @@ declare interface Window{
   less?: any;
   arco?: any;
   arcoicon?: any;
-  ReactCoreForm?: any;
+  eval5?: any;
+  lyr?: any;
 }
 
 declare interface String{

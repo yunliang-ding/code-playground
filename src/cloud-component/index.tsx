@@ -6,12 +6,9 @@
  */
 import ReactDOM from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
-import {
-  babelParse,
-  babelParseCode,
-  MarkdownViewer,
-} from 'lyr-extra';
+import { babelParse, babelParseCode, MarkdownViewer } from 'lyr-extra';
 import { Interpreter } from 'eval5';
+
 import Main, { injectStyle } from './main';
 import Menus from './menus';
 import './index.less';
@@ -76,15 +73,14 @@ const CloudComponent = ({
         try {
           onLog(`加载资源: ${item.name}`);
           if (item.type === 'javascript') {
-            await interpreter.evaluate(
-              babelParseCode({
-                code: item.content,
-              }),
-            )();
-            _dep[item.name] = window[item.name];
+            const fn = babelParseCode({
+              code: item.content,
+            });
+            await interpreter.evaluate(fn)()
           } else if (item.type === 'react') {
             _dep[item.name] = babelParse({
               code: item.content,
+              require,
             });
           } else if (item.type === 'less' && window.less) {
             const { css } = await window.less.render?.(item.content); // 要添加的 CSS 字符串
