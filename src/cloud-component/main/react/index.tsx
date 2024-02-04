@@ -1,6 +1,7 @@
 import React from 'react';
 import { CodeEditor } from 'lyr-code-editor';
 import Tabs from './tabs';
+import store from '@/store';
 
 const Container = ({ selectedTab, item, require, previewRender }) => {
   const codeRef1: any = React.useRef({});
@@ -24,6 +25,7 @@ const Container = ({ selectedTab, item, require, previewRender }) => {
           value={item.react}
           onChange={(code) => {
             item.react = code;
+            store.reactChange = item.originReact !== code;
           }}
         />
       </div>

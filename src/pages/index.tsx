@@ -10,6 +10,7 @@ import Loading from '@/component/loading';
 import CodeHistory from './component/code-history';
 import { IconLaunch, IconRefresh } from '@arco-design/web-react/icon';
 import { useSearchParams } from 'react-router-dom';
+import store from '@/store';
 import './index.less';
 
 export const sleep = (timer = 500) => new Promise((r) => setTimeout(r, timer));
@@ -38,6 +39,8 @@ const Component = ({ initialDependencies = [], id }) => {
       selected: undefined,
     });
     if (code === 200) {
+      value.originReact = value.react; // 同步原始脚本
+      store.reactChange = false;
       simpleNotice(
         value.id
           ? `组件(${value.componentName})已更新`
@@ -67,6 +70,7 @@ const Component = ({ initialDependencies = [], id }) => {
                 open: String(item.id) === id,
                 selected: String(item.id) === id,
                 props: JSON.parse(item.props),
+                originReact: item.react,
               };
             })
           : [],

@@ -81,8 +81,24 @@ export default ({
           onClick={() => {
             CreateModal({
               title: '添加组件',
-              height: 100,
+              height: 180,
+              initialValues: {
+                type: 1
+              },
               schema: [
+                {
+                  type: "RadioGroup",
+                  name: "type",
+                  props: {
+                    options: [{
+                      label: "markdown 文件",
+                      value: 0
+                    }, {
+                      label: "react 组件",
+                      value: 1,
+                    }]
+                  }
+                },
                 {
                   type: 'Input',
                   name: 'name',
@@ -114,7 +130,11 @@ export default ({
               ],
             }).open({
               async onSubmit(values) {
-                const item = await addComponent(values.name);
+                let { type, name } = values
+                if(type === 0){
+                  name += ".md";
+                }
+                const item = await addComponent(name);
                 setComponent([item, ...component]);
               },
             });

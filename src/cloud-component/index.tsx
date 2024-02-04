@@ -71,12 +71,13 @@ const CloudComponent = ({
       if (item.content) {
         // 使用 eval5 加载脚本
         try {
+          await new Promise((res) => setTimeout(res, 400));
           onLog(`加载资源: ${item.name}`);
           if (item.type === 'javascript') {
             const fn = babelParseCode({
               code: item.content,
             });
-            await interpreter.evaluate(fn)()
+            await interpreter.evaluate(fn)();
           } else if (item.type === 'react') {
             _dep[item.name] = babelParse({
               code: item.content,

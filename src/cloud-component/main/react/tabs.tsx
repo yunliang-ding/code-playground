@@ -2,6 +2,7 @@ import { Button } from 'lyr-design';
 import { Message, Upload } from '@arco-design/web-react';
 import { downloadFile } from 'lyr-extra';
 import { IconClose } from '@arco-design/web-react/icon';
+import store from '@/store';
 
 export default ({
   component,
@@ -11,6 +12,7 @@ export default ({
   onAdd,
   extra,
 }) => {
+  const { reactChange } = store.use();
   return (
     <div className="cloud-component-right-header">
       <div className="cloud-component-tabs">
@@ -22,6 +24,7 @@ export default ({
                 icon: <i className="file-icon javascript-lang-file-icon" />,
                 name: 'index.js',
                 content: item.react,
+                change: reactChange,
               },
               {
                 icon: <i className="file-icon less-lang-file-icon" />,
@@ -48,17 +51,24 @@ export default ({
                 >
                   {file.icon}
                   {file.name}
+                  {file.change && (
+                    <svg viewBox="0 0 1024 1024" width="20" height="20">
+                      <path
+                        d="M512 298.666667c117.333333 0 213.333333 96 213.333333 213.333333s-96 213.333333-213.333333 213.333333-213.333333-96-213.333333-213.333333S394.666667 298.666667 512 298.666667z"
+                        fill="#e6e6e6"
+                      ></path>
+                    </svg>
+                  )}
                   <span
                     className="close-icon"
                     onClick={(e) => {
-                      e.stopPropagation();
-                      // 关闭之后默认选中第一个打开的
-                      const opens = component.filter(
-                        (i) => i.open && i.componentName !== item.componentName,
-                      );
-                      if (item.selected && opens[0]) {
-                        opens[0].selected = true;
+                      if (reactChange) {
+                        const res = confirm('当前文件未保存，是否确认关闭?');
+                        if (!res) {
+                          return;
+                        }
                       }
+                      e.stopPropagation();
                       item.open = false;
                       item.selected = false;
                       setComponent([...component]);
