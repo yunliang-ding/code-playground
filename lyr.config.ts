@@ -5,7 +5,7 @@ export default defineConfig({
   favicon: 'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/assets/favicon.ico',
   link: [
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.css',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.css',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.css',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/monaco-file-icon.css',
   ],
   devScript: [
@@ -22,7 +22,7 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco-icon.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/aliyun-oss-sdk.min.js',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
@@ -42,7 +42,7 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/arco-icon.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/aliyun-oss-sdk.min.js',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-design.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',

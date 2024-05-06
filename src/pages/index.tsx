@@ -1,6 +1,6 @@
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
 import { useEffect, useRef, useState } from 'react';
-import { Button, CreateDrawer } from 'lyr-design';
+import { Button, CreateDrawer } from 'lyr-component';
 import { Message, Notification, Space } from '@arco-design/web-react';
 import { downloadFile } from 'lyr-extra';
 import { instance } from '@/axios';
@@ -91,7 +91,7 @@ const Component = ({ initialDependencies = [], id }) => {
           require={{
             '@arco-design/web-react': window.arco,
             '@arco-design/web-react/icon': window.arcoicon,
-            'lyr-design': window.lyr,
+            'lyr-component': window.lyr,
           }}
           onSave={addOrUpdate}
           onLog={async (info) => {

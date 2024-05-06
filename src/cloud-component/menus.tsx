@@ -4,7 +4,7 @@ import { isEmpty } from 'lyr-extra';
 import Dependencies from './dependencies';
 import { IconRender } from './main';
 import { IconPlus } from '@arco-design/web-react/icon';
-import { CreateModal } from 'lyr-design';
+import { CreateModal } from 'lyr-component';
 import { Message } from '@arco-design/web-react';
 
 const reactStr = `import { Button } from '@arco-design/web-react';

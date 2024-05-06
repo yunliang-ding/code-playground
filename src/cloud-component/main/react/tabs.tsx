@@ -1,4 +1,4 @@
-import { Button } from 'lyr-design';
+import { Button } from 'lyr-component';
 import { Message, Upload } from '@arco-design/web-react';
 import { downloadFile } from 'lyr-extra';
 import { IconClose } from '@arco-design/web-react/icon';

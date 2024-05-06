@@ -1,5 +1,5 @@
 /** 资源包 */
-import { CreateDrawer, SchemaProps } from 'lyr-design';
+import { CreateDrawer, SchemaProps } from 'lyr-component';
 import { IconPlus } from '@arco-design/web-react/icon';
 import { CodeEditor } from 'lyr-code-editor';
 
