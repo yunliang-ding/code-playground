@@ -3663,10 +3663,10 @@ lyr-code-editor@0.0.1:
     lyr-store "0.0.1"
     react-contexify "5.0.0"
 
-lyr-component@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/lyr-component/-/lyr-component-1.0.0.tgz#9d5dee4b1ff1d6d95c11b19b62f9e4527325663a"
-  integrity sha512-kLn0h5kA2e4GEHNsQgYgNv0WkLvcjlF/NOyW+nnnLFw6uDCPug+vE8iGX8olnZI0K0zNIh6hPxQnbFebeGrZFw==
+lyr-component@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/lyr-component/-/lyr-component-1.0.3.tgz#715560e46bdf64be77b42ca69fdcbbf74e167151"
+  integrity sha512-d26d++Bhvo6tLBCe6Z3kpAxgf0fl7GSlEM9X0eWla2iGCBa5PuqaVKOSDf2ACG3jYXwF1NNbn6eTZohkd2DRXA==
   dependencies:
     dayjs "1.11.10"
     lodash.clonedeepwith "4.5.0"

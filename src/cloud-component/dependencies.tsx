@@ -11,7 +11,7 @@ const iconMapping = {
 
 const schema = [
   {
-    type: 'Input',
+    widget: 'Input',
     name: 'name',
     label: '资源名称',
     extra: '如果资源是umd包，请确保资源名称和window挂载的属性一致',
@@ -28,7 +28,7 @@ const schema = [
     },
   },
   {
-    type: 'RadioGroup',
+    widget: 'RadioGroup',
     name: 'type',
     label: '类型',
     props: {
@@ -49,7 +49,7 @@ const schema = [
     },
   },
   {
-    type: 'RadioGroup',
+    widget: 'RadioGroup',
     label: '上传格式',
     name: 'codeWay',
     props: {
@@ -66,7 +66,7 @@ const schema = [
     },
   },
   {
-    type: 'CodeEditor',
+    widget: 'CodeEditor',
     name: 'content',
     label: '编写脚本',
     required: true,
@@ -94,7 +94,7 @@ const schema = [
     },
   },
   {
-    type: 'OssFileUpload',
+    widget: 'OssFileUpload',
     name: 'ossPath',
     label: '上传脚本',
     required: true,

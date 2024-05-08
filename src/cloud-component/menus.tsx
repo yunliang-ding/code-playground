@@ -87,7 +87,7 @@ export default ({
               },
               schema: [
                 {
-                  type: "RadioGroup",
+                  widget: "RadioGroup",
                   name: "type",
                   props: {
                     options: [{
@@ -100,7 +100,7 @@ export default ({
                   }
                 },
                 {
-                  type: 'Input',
+                  widget: 'Input',
                   name: 'name',
                   label: '组件名',
                   required: true,
