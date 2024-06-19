@@ -12,7 +12,7 @@ export default ({
   onAdd,
   extra,
 }) => {
-  const { reactChange } = store.use();
+  const { reactChange } = store.useSnapshot();
   return (
     <div className="cloud-component-right-header">
       <div className="cloud-component-tabs">

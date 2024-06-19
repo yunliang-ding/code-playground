@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CodeEditor } from 'lyr-code-editor';
 import Tabs from './tabs';
 import store from '@/store';
@@ -7,6 +7,11 @@ const Container = ({ selectedTab, item, require, previewRender }) => {
   const codeRef1: any = React.useRef({});
   const codeRef2: any = React.useRef({});
   const codeRef3: any = React.useRef({});
+  useEffect(() => {
+    setTimeout(() => {
+      (window as any).monaco?.editor.setTheme("vs-dark");
+    })
+  }, [])
   return (
     <div
       className="cloud-component-right-body"

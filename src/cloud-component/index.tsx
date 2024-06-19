@@ -6,14 +6,11 @@
  */
 import ReactDOM from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
-import { babelParse, babelParseCode, MarkdownViewer } from 'lyr-extra';
-import { Interpreter } from 'eval5';
+import { babelParse, MarkdownViewer } from 'lyr-extra';
 
 import Main, { injectStyle } from './main';
 import Menus from './menus';
 import './index.less';
-
-const interpreter = new Interpreter(window);
 
 export interface CloudComponentProps {
   /** 实例引用 */
@@ -69,15 +66,11 @@ const CloudComponent = ({
     for (let i = 0; i < dep.length; i++) {
       const item = dep[i];
       if (item.content) {
-        // 使用 eval5 加载脚本
         try {
           await new Promise((res) => setTimeout(res, 400));
           onLog(`加载资源: ${item.name}`);
           if (item.type === 'javascript') {
-            const fn = babelParseCode({
-              code: item.content,
-            });
-            await interpreter.evaluate(fn)();
+            new Function(item.content)();
           } else if (item.type === 'react') {
             _dep[item.name] = babelParse({
               code: item.content,

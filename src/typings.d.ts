@@ -17,7 +17,6 @@ declare interface Window{
   less?: any;
   arco?: any;
   arcoicon?: any;
-  eval5?: any;
   lyr?: any;
 }
 

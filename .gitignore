@@ -12,6 +12,7 @@ runtime
 logs
 # misc
 .DS_Store
+
 *.swp
 *.dia~
 
@@ -22,5 +23,6 @@ index.module.scss.d.ts
 .vscode/settings.json
 .gitpod.yml
 src/.lyr
+src/.theme
 yarn.lock
 www

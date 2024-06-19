@@ -19,8 +19,6 @@ runApp({
       const newSearch = urlSearchParams.toString();
       history.replaceState({}, '', `${pathname}${newSearch}${hash}`); // 地址重新刷一下
     }
-    // 查询 userInfo 获取详细信息
-    document.body.setAttribute('arco-theme', 'dark'); // 黑色主题
     const { data }: any = await userInfo();
     return {
       auth: [],

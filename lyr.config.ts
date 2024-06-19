@@ -25,8 +25,8 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js',
   ],
   buildScript: [
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/react.production.min.js',
@@ -45,14 +45,15 @@ export default defineConfig({
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-component.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/socket.io.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/less.min.js',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/prism.min.js',
-    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/eval5.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-code-editor.min.js',
+    'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/lyr-extra.min.js',
     'https://lyr-cli-oss.oss-cn-beijing.aliyuncs.com/cdn/track.min.js',
   ],
   webpackConfig: () => {
     return {
       externals: {
-        eval5: 'eval5',
+        "lyr-code-editor": "lyrCodeEditor",
+        "lyr-extra": "lyrExtra"
       },
     };
   },

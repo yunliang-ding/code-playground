@@ -1,13 +1,10 @@
 import { Component, useEffect, useState } from 'react';
-import { babelParseCode, babelParse } from 'lyr-extra';
+import { babelParse } from 'lyr-extra';
 import { isEmpty } from 'lyr-extra';
 import { instance } from '@/axios';
-import { Interpreter } from 'eval5';
 import CloudComponent from '@/cloud-component';
 import { useSearchParams } from 'react-router-dom';
 import './index.less';
-
-const interpreter = new Interpreter(window);
 
 const RenderError = (error) => {
   CloudComponent.render(
@@ -79,18 +76,16 @@ export default () => {
       for (let i = 0; i < list.length; i++) {
         const item = list[i];
         if (item.content) {
-          // 使用 eval5 加载脚本
           try {
             if (item.type === 'javascript') {
-              await interpreter.evaluate(
-                babelParseCode({
-                  code: item.content,
-                }),
-              )();
+              new Function(item.content)();
               dependencies[item.name] = window[item.name];
             } else if (item.type === 'react') {
               dependencies[item.name] = babelParse({
                 code: item.content,
+                require: {
+                  '@arco-design/web-react': window.arco,
+                }
               });
             } else if (item.type === 'less' && (window as any).less) {
               const { css } = await (window as any).less.render?.(item.content); // 要添加的 CSS 字符串
