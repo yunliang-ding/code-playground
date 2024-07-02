@@ -17,10 +17,10 @@
   dependencies:
     color "^3.1.3"
 
-"@arco-design/web-react@2.57.0":
-  version "2.57.0"
-  resolved "https://registry.npmmirror.com/@arco-design/web-react/-/web-react-2.57.0.tgz#0f192bd4fb1e30c7c531a9aaf2489d62470bb061"
-  integrity sha512-OAPHj3j078AGonYCSgGuc/nud1y8wmg4Z96nH2fpKFP+nfGBlqVxRPXlNQLocwzjmmFAfOIoFt3P873NDpGh/w==
+"@arco-design/web-react@2.58.2":
+  version "2.58.2"
+  resolved "https://registry.npmjs.org/@arco-design/web-react/-/web-react-2.58.2.tgz#4919da4b99a64d88f796c67bfe4a02bf44ea74b6"
+  integrity sha512-2gEDmM/oRSckZ67REsKO45THxaWghyHS1EVJYqQFXyO4dl7djf5VEgCCt/O0z393xv5akpBhoWk/n57uoHCeyA==
   dependencies:
     "@arco-design/color" "^0.4.0"
     "@babel/runtime" "^7.5.5"
@@ -31,6 +31,7 @@
     lodash "^4.17.21"
     number-precision "^1.3.1"
     react-focus-lock "^2.9.1"
+    react-is "^18.2.0"
     react-transition-group "^4.3.0"
     resize-observer-polyfill "^1.5.1"
     scroll-into-view-if-needed "2.2.20"
@@ -456,10 +457,10 @@
   resolved "https://registry.npmmirror.com/@polka/url/-/url-1.0.0-next.24.tgz#58601079e11784d20f82d0585865bb42305c4df3"
   integrity sha512-2LuNTFBIO0m7kKIQvvPHN6UE63VjpmL9rnEEaOOaiSPbZK+zUOYIzBAWcED+3XYzhYsd/0mD57VdxAEqqV52CQ==
 
-"@remix-run/router@1.14.0":
-  version "1.14.0"
-  resolved "https://registry.npmmirror.com/@remix-run/router/-/router-1.14.0.tgz#9bc39a5a3a71b81bdb310eba6def5bc3966695b7"
-  integrity sha512-WOHih+ClN7N8oHk9N4JUiMxQJmRVaOxcg8w7F/oHUXzJt920ekASLI/7cYX8XkntDWRhLZtsk6LbGrkgOAvi5A==
+"@remix-run/router@1.13.0":
+  version "1.13.0"
+  resolved "https://registry.npmjs.org/@remix-run/router/-/router-1.13.0.tgz#7e29c4ee85176d9c08cb0f4456bff74d092c5065"
+  integrity sha512-5dMOnVnefRsl4uRnAdoWjtVTdh8e6aZqgM4puy9nmEADH72ck+uXwzpJLEKE9Q6F8ZljNewLgmTfkxUrBdv4WA==
 
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
@@ -527,40 +528,6 @@
   integrity sha512-nNPsNE65wjMxEKI93yOP+NPGGBJz/PoN3kZsVLee0XMiJolxSekEVD8wRwBUBqkwc7UWop0edW50yrCQW4CyRw==
   dependencies:
     undici-types "~5.26.4"
-
-"@types/prop-types@*":
-  version "15.7.9"
-  resolved "https://registry.npmmirror.com/@types/prop-types/-/prop-types-15.7.9.tgz#b6f785caa7ea1fe4414d9df42ee0ab67f23d8a6d"
-  integrity sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==
-
-"@types/react-dom@17.0.2":
-  version "17.0.2"
-  resolved "https://registry.npmmirror.com/@types/react-dom/-/react-dom-17.0.2.tgz#35654cf6c49ae162d5bc90843d5437dc38008d43"
-  integrity sha512-Icd9KEgdnFfJs39KyRyr0jQ7EKhq8U6CcHRMGAS45fp5qgUvxL3ujUCfWFttUK2UErqZNj97t9gsVPNAqcwoCg==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react@*":
-  version "18.2.34"
-  resolved "https://registry.npmmirror.com/@types/react/-/react-18.2.34.tgz#aed20f19473721ba328feb99d1ec3307ebc1a8dd"
-  integrity sha512-U6eW/alrRk37FU/MS2RYMjx0Va2JGIVXELTODaTIYgvWGCV4Y4TfTUzG8DdmpDNIT0Xpj/R7GfyHOJJrDttcvg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@17.0.2":
-  version "17.0.2"
-  resolved "https://registry.npmmirror.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
-  integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^3.0.2"
-
-"@types/scheduler@*":
-  version "0.16.5"
-  resolved "https://registry.npmmirror.com/@types/scheduler/-/scheduler-0.16.5.tgz#4751153abbf8d6199babb345a52e1eb4167d64af"
-  integrity sha512-s/FPdYRmZR8SjLWGMCuax7r3qCWQw9QKHzXVukAuuIJkXkDRwp+Pu5LMIVFi0Fxbav35WURicYr8u1QsoybnQw==
 
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
@@ -2041,6 +2008,11 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.npmmirror.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
+fast-plist@^0.1.2:
+  version "0.1.3"
+  resolved "https://registry.npmjs.org/fast-plist/-/fast-plist-0.1.3.tgz#328cd9335e93a2479ac90814a1302437574ea925"
+  integrity sha512-d9cEfo/WcOezgPLAC/8t8wGb6YOD6JTCPMw2QcG2nAdFmyY+9rTUizCTaGjIZAloWENTEUMAPpkUAIJJJ0i96A==
+
 fastest-levenshtein@^1.0.12:
   version "1.0.16"
   resolved "https://registry.npmmirror.com/fastest-levenshtein/-/fastest-levenshtein-1.0.16.tgz#210e61b6ff181de91ea9b3d1b84fdedd47e034e5"
@@ -2846,11 +2818,12 @@ lru-cache@^6.0.0:
   resolved "https://registry.npmmirror.com/lru-cache/-/lru-cache-10.1.0.tgz#2098d41c2dc56500e6c88584aa656c84de7d0484"
   integrity sha512-/1clY/ui8CzjKFyjdvwPWJUYKiFVXG2I2cY0ssG7h4+hwk+XOIX7ZSG9Q7TW8TW3Kp3BUSqgFWBLgL4PJ+Blag==
 
-lyr-cli@1.0.22:
-  version "1.0.22"
-  resolved "https://registry.npmjs.org/lyr-cli/-/lyr-cli-1.0.22.tgz#c477ee0feaa226d1dc1cde0c7d319be81a4408cc"
-  integrity sha512-z8imsiCf3OJZSSPYowjxEBEgFnftL9q3WGCNE/gcKKuaoLegmRdPvtROgNJzmd96hlc6zqzfrL6sWkbFbwaAgA==
+lyr-cli@1.0.27:
+  version "1.0.27"
+  resolved "https://registry.npmjs.org/lyr-cli/-/lyr-cli-1.0.27.tgz#79f882a30a215134c07147e13d21538b6ad6276a"
+  integrity sha512-tJfpIM/fMKJQIkLPWh6vA7dgq5PowZsI2Ee6mxHN/rZjaQqTC3sVLw8fH9WoKIdlDJJMNl2k3LjHAZvPWpMNaQ==
   dependencies:
+    "@arco-design/web-react" "2.58.2"
     "@babel/core" "7.23.5"
     "@koa/cors" "4.0.0"
     ali-oss "6.18.1"
@@ -2866,7 +2839,14 @@ lyr-cli@1.0.22:
     jsonwebtoken "9.0.2"
     less "4.2.0"
     less-loader "11.1.3"
+    lyr-component "^1.1.0"
+    lyr-hooks "0.0.3"
     mini-css-extract-plugin "2.7.6"
+    nprogress "^0.2.0"
+    react "17.0.2"
+    react-dom "17.0.2"
+    react-fast-marquee "1.3.2"
+    react-router-dom "6.20.0"
     style-loader "3.3.3"
     think-cache "^1.0.0"
     think-cache-file "^1.0.8"
@@ -2884,19 +2864,23 @@ lyr-cli@1.0.22:
     webpackbar "5.0.2"
     ws "8.16.0"
 
-lyr-code-editor@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/lyr-code-editor/-/lyr-code-editor-1.0.3.tgz#c6cd5b87f761dab1314687d26d75f6478d9f23de"
-  integrity sha512-BNXmKMx2mRRp31UHBtDuI5CAd8JxXIEBTmNa/r8CLBel7kTsG7JfiFlVFyr9S6NnVDDOIHT+ZSeXzNmtAuKFLw==
+lyr-code-editor@1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/lyr-code-editor/-/lyr-code-editor-1.0.4.tgz#0936f1c8440f0ff15d5f3c3aa6290b89ffd58716"
+  integrity sha512-0ghRFyyya32ykFtV/zmu29kG9KsxX/ZHkCQ4uMaS/LYMyIfXdfsbVgz5u8WQkRdX5S9Bqlw3mTXacgxWpMUXkQ==
   dependencies:
     "@monaco-editor/loader" "^1.3.3"
     lodash.clonedeep "4.5.0"
     lodash.debounce "4.0.8"
+    monaco-editor-textmate "4.0.0"
+    monaco-textmate "3.0.1"
+    onigasm "2.2.5"
+    vscode-theme-to-monaco-theme-web "1.0.0"
 
-lyr-component@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/lyr-component/-/lyr-component-1.1.0.tgz#300887e1b150669be3d9bc1efd6578b010a67654"
-  integrity sha512-vTt/P+kZBIq73mGvh559FSk+kQdzCd1MnUiQUELoFxZRZos4W/ncfy3Vb8GZ+SKTtw2VHC6g6RFqNYEp5/TrQA==
+lyr-component@^1.1.0:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/lyr-component/-/lyr-component-1.1.1.tgz#e348a012da86c8d2cfda6be0811c025483b310ca"
+  integrity sha512-RlFB/Ucaxr5twM6kGyLq59UISEM9AgBQb/owi2p6AZEGwfj/3FQMp7o0oEldui7wSBXUqdK0yMSC6xH67CcFPA==
   dependencies:
     dayjs "1.11.10"
     lodash.clonedeepwith "4.5.0"
@@ -2905,10 +2889,10 @@ lyr-component@1.1.0:
     lyr-hooks "0.0.3"
     react-resizable "3.0.4"
 
-lyr-extra@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/lyr-extra/-/lyr-extra-0.1.2.tgz#cbd75e3ba563b2212e9ab711f35cd5366769132e"
-  integrity sha512-HLFSkLrUzQopx5AfTVQKyGyx0IfBHVtM73lu3mY1DLbZv9kmxWpzpz0CXJRJx4kifhRxrRGYi/0kkl5GnsrGpA==
+lyr-extra@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/lyr-extra/-/lyr-extra-0.1.4.tgz#cf1e0821001a07f1019bef3a26ba6ef396357f93"
+  integrity sha512-RSKKd0KZe++lpqNGlyi5GnXbb7dEfGeJ3XRcCjI8SR7ruH1e/AIpNKPboj2ih9QB2S1ur4Wf2Fubi+t5AmLPUQ==
 
 lyr-hooks@0.0.3:
   version "0.0.3"
@@ -3006,6 +2990,18 @@ moment@^2.29.4:
   version "2.30.1"
   resolved "https://registry.npmmirror.com/moment/-/moment-2.30.1.tgz#f8c91c07b7a786e30c59926df530b4eac96974ae"
   integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
+monaco-editor-textmate@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/monaco-editor-textmate/-/monaco-editor-textmate-4.0.0.tgz#f85a8916989dac01791fff1f001e56fdb2907ab4"
+  integrity sha512-Clwup5LJzVfwURQrS+odSEC5/hZBEG36pQnvBKt4OtBndF8r2xLeXUZcK/AqEBK2u0Npy7frFp9hG7m66Ol9hA==
+
+monaco-textmate@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/monaco-textmate/-/monaco-textmate-3.0.1.tgz#b6d26d266aa12edaff7069dae0d6e3747cba5cd7"
+  integrity sha512-ZxxY3OsqUczYP1sGqo97tu+CJmMBwuSW+dL0WEBdDhOZ5G1zntw72hvBc68ZQAirosWvbDKgN1dL5k173QtFww==
+  dependencies:
+    fast-plist "^0.1.2"
 
 mrmime@^1.0.0:
   version "1.0.1"
@@ -3137,6 +3133,13 @@ once@^1.3.1, once@^1.4.0:
   integrity sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==
   dependencies:
     wrappy "1"
+
+onigasm@2.2.5:
+  version "2.2.5"
+  resolved "https://registry.npmjs.org/onigasm/-/onigasm-2.2.5.tgz#cc4d2a79a0fa0b64caec1f4c7ea367585a676892"
+  integrity sha512-F+th54mPc0l1lp1ZcFMyL/jTs2Tlq4SqIHKIXGZOR/VkHkF9A7Fr5rRr5+ZG/lWeRsyrClLYRq7s/yFQ/XhWCA==
+  dependencies:
+    lru-cache "^5.1.1"
 
 only@~0.0.2:
   version "0.0.2"
@@ -3389,9 +3392,9 @@ react-clientside-effect@^1.2.6:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-dom@^17.0.2:
+react-dom@17.0.2:
   version "17.0.2"
-  resolved "https://registry.npmmirror.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
   dependencies:
     loose-envify "^1.1.0"
@@ -3428,6 +3431,11 @@ react-is@^16.13.1:
   resolved "https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-is@^18.2.0:
+  version "18.3.1"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
+  integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
+
 react-resizable@3.0.4:
   version "3.0.4"
   resolved "https://registry.npmmirror.com/react-resizable/-/react-resizable-3.0.4.tgz#aa20108eff28c52c6fddaa49abfbef8abf5e581b"
@@ -3436,20 +3444,20 @@ react-resizable@3.0.4:
     prop-types "15.x"
     react-draggable "^4.0.3"
 
-react-router-dom@6.21.0:
-  version "6.21.0"
-  resolved "https://registry.npmmirror.com/react-router-dom/-/react-router-dom-6.21.0.tgz#aa4c6bc046a8e8723095bc09b3c0ab2254532712"
-  integrity sha512-1dUdVj3cwc1npzJaf23gulB562ESNvxf7E4x8upNJycqyUm5BRRZ6dd3LrlzhtLaMrwOCO8R0zoiYxdaJx4LlQ==
+react-router-dom@6.20.0:
+  version "6.20.0"
+  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.20.0.tgz#7b9527a1e29c7fb90736a5f89d54ca01f40e264b"
+  integrity sha512-CbcKjEyiSVpA6UtCHOIYLUYn/UJfwzp55va4yEfpk7JBN3GPqWfHrdLkAvNCcpXr8QoihcDMuk0dzWZxtlB/mQ==
   dependencies:
-    "@remix-run/router" "1.14.0"
-    react-router "6.21.0"
+    "@remix-run/router" "1.13.0"
+    react-router "6.20.0"
 
-react-router@6.21.0:
-  version "6.21.0"
-  resolved "https://registry.npmmirror.com/react-router/-/react-router-6.21.0.tgz#6fe3e59877aca3dccceec1801d26991ddf42d12b"
-  integrity sha512-hGZ0HXbwz3zw52pLZV3j3+ec+m/PQ9cTpBvqjFQmy2XVUWGn5MD+31oXHb6dVTxYzmAeaiUBYjkoNz66n3RGCg==
+react-router@6.20.0:
+  version "6.20.0"
+  resolved "https://registry.npmjs.org/react-router/-/react-router-6.20.0.tgz#4275a3567ecc55f7703073158048db10096bb539"
+  integrity sha512-pVvzsSsgUxxtuNfTHC4IxjATs10UaAtvLGVSA1tbUE4GDaOSU1Esu2xF5nWLz7KPiMuW8BJWuPFdlGYJ7/rW0w==
   dependencies:
-    "@remix-run/router" "1.14.0"
+    "@remix-run/router" "1.13.0"
 
 react-transition-group@^4.3.0:
   version "4.4.5"
@@ -3461,9 +3469,9 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^17.0.2:
+react@17.0.2:
   version "17.0.2"
-  resolved "https://registry.npmmirror.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
+  resolved "https://registry.npmjs.org/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
   dependencies:
     loose-envify "^1.1.0"
@@ -4356,11 +4364,6 @@ type-is@^1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@5.3.2:
-  version "5.3.2"
-  resolved "https://registry.npmmirror.com/typescript/-/typescript-5.3.2.tgz#00d1c7c1c46928c5845c1ee8d0cc2791031d4c43"
-  integrity sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==
-
 undici-types@~5.26.4:
   version "5.26.5"
   resolved "https://registry.npmmirror.com/undici-types/-/undici-types-5.26.5.tgz#bcd539893d00b56e964fd2657a4866b221a65617"
@@ -4482,6 +4485,11 @@ vary@^1, vary@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmmirror.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+vscode-theme-to-monaco-theme-web@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/vscode-theme-to-monaco-theme-web/-/vscode-theme-to-monaco-theme-web-1.0.0.tgz#bfab07eacb00cef0b67a9c082d369b3324583d54"
+  integrity sha512-euHQQMAEclMsO9geOH4nuzP/ZUR6B3OIBvDP4AmfFTs8OFLKlRUsP01fqt+BrZEHb31jVqDTDQuc2lM5/7VkUw==
 
 watchpack@^2.4.0:
   version "2.4.0"
