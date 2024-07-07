@@ -440,9 +440,9 @@
   dependencies:
     vary "^1.1.2"
 
-"@monaco-editor/loader@^1.3.3":
+"@monaco-editor/loader@^1.4.0":
   version "1.4.0"
-  resolved "https://registry.npmmirror.com/@monaco-editor/loader/-/loader-1.4.0.tgz#f08227057331ec890fa1e903912a5b711a2ad558"
+  resolved "https://registry.npmjs.org/@monaco-editor/loader/-/loader-1.4.0.tgz#f08227057331ec890fa1e903912a5b711a2ad558"
   integrity sha512-00ioBig0x642hytVspPl7DbQyaSWRaolYie/UFNjoTdvoKPzo6xrXLhTk9ixgIKcLH5b5vDOjVNiGyY+uDCUlg==
   dependencies:
     state-local "^1.0.6"
@@ -674,6 +674,80 @@
   version "4.2.2"
   resolved "https://registry.npmmirror.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
+
+"@yl-d/cli@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@yl-d/cli/-/cli-1.0.0.tgz#bd533eba7972b35b2529bb5d0537bcf21ecb5ffe"
+  integrity sha512-acDBaIiNYN9deZlr17RFOdBMMeZiN1qGlUS9mqnhG+AY0qKbkg8vbgc8lFcYuJGplu+I2nh9vL5H4qGutyBnpw==
+  dependencies:
+    "@arco-design/web-react" "2.58.2"
+    "@babel/core" "7.23.5"
+    "@koa/cors" "4.0.0"
+    "@yl-d/components" "^1.0.2"
+    ali-oss "6.18.1"
+    axios "1.6.3"
+    babel-preset-env "1.7.0"
+    chalk "^4.0.0"
+    chokidar "3.5.3"
+    css-loader "6.8.1"
+    esbuild-loader "4.0.2"
+    file-loader "6.2.0"
+    fs-extra "11.2.0"
+    glob "10.3.10"
+    jsonwebtoken "9.0.2"
+    less "4.2.0"
+    less-loader "11.1.3"
+    mini-css-extract-plugin "2.7.6"
+    nprogress "^0.2.0"
+    react "17.0.2"
+    react-dom "17.0.2"
+    react-fast-marquee "1.3.2"
+    react-router-dom "6.20.0"
+    style-loader "3.3.3"
+    think-cache "^1.0.0"
+    think-cache-file "^1.0.8"
+    think-logger3 "^1.0.0"
+    think-model "^1.0.0"
+    think-model-mysql "^1.0.0"
+    think-watcher "^3.0.0"
+    think-websocket "1.0.8"
+    think-websocket-socket.io "1.0.13"
+    thinkjs "^3.0.0"
+    url-loader "4.1.1"
+    webpack "5.89.0"
+    webpack-bundle-analyzer "4.10.1"
+    webpack-cli "5.1.4"
+    webpackbar "5.0.2"
+    ws "8.16.0"
+
+"@yl-d/code-editor@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@yl-d/code-editor/-/code-editor-1.0.5.tgz#e527da0033d72c868d65584136744c57b56f1b26"
+  integrity sha512-11HHqP768cekeX9dvoe4p04dTB8hhKUmnAsmwHNIbuigJDyMvOD0QXaHpwzFmhiKnQO5vPSyU7FiMIar/sCg3w==
+  dependencies:
+    "@monaco-editor/loader" "^1.4.0"
+    lodash.clonedeep "4.5.0"
+    lodash.debounce "4.0.8"
+    monaco-editor-textmate "4.0.0"
+    monaco-textmate "3.0.1"
+    onigasm "2.2.5"
+
+"@yl-d/components@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@yl-d/components/-/components-1.0.2.tgz#f54ddd190f5eb8fbe82999c68c6a31e024512e13"
+  integrity sha512-85Bdwex8lHuYoaoqJC6mGRqs0SmuWWNKdyrOq74yw1iU+ikuojN6e3oFvS5k/VsTjpkXypM7qsU8L0BPA8ciCA==
+  dependencies:
+    dayjs "1.11.10"
+    lodash.clonedeepwith "4.5.0"
+    lodash.debounce "4.0.8"
+    lodash.mergewith "4.6.2"
+    react-resizable "3.0.4"
+    use-sync-external-store "1.2.2"
+
+"@yl-d/extra@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@yl-d/extra/-/extra-1.0.0.tgz#3c86e8de1aa4922bc01e24c65bdc013feb226616"
+  integrity sha512-IrTzLJpTdivc2m8C0qkNfYzsv0sbTP9EQ9IIclNd6Jrl13AY4k0sqfW66CnD6rF4921lvfxVlSgz5OA7fMF2NA==
 
 accepts@^1.3.5, accepts@~1.3.4:
   version "1.3.8"
@@ -2818,91 +2892,6 @@ lru-cache@^6.0.0:
   resolved "https://registry.npmmirror.com/lru-cache/-/lru-cache-10.1.0.tgz#2098d41c2dc56500e6c88584aa656c84de7d0484"
   integrity sha512-/1clY/ui8CzjKFyjdvwPWJUYKiFVXG2I2cY0ssG7h4+hwk+XOIX7ZSG9Q7TW8TW3Kp3BUSqgFWBLgL4PJ+Blag==
 
-lyr-cli@1.0.27:
-  version "1.0.27"
-  resolved "https://registry.npmjs.org/lyr-cli/-/lyr-cli-1.0.27.tgz#79f882a30a215134c07147e13d21538b6ad6276a"
-  integrity sha512-tJfpIM/fMKJQIkLPWh6vA7dgq5PowZsI2Ee6mxHN/rZjaQqTC3sVLw8fH9WoKIdlDJJMNl2k3LjHAZvPWpMNaQ==
-  dependencies:
-    "@arco-design/web-react" "2.58.2"
-    "@babel/core" "7.23.5"
-    "@koa/cors" "4.0.0"
-    ali-oss "6.18.1"
-    axios "1.6.3"
-    babel-preset-env "1.7.0"
-    chalk "^4.0.0"
-    chokidar "3.5.3"
-    css-loader "6.8.1"
-    esbuild-loader "4.0.2"
-    file-loader "6.2.0"
-    fs-extra "11.2.0"
-    glob "10.3.10"
-    jsonwebtoken "9.0.2"
-    less "4.2.0"
-    less-loader "11.1.3"
-    lyr-component "^1.1.0"
-    lyr-hooks "0.0.3"
-    mini-css-extract-plugin "2.7.6"
-    nprogress "^0.2.0"
-    react "17.0.2"
-    react-dom "17.0.2"
-    react-fast-marquee "1.3.2"
-    react-router-dom "6.20.0"
-    style-loader "3.3.3"
-    think-cache "^1.0.0"
-    think-cache-file "^1.0.8"
-    think-logger3 "^1.0.0"
-    think-model "^1.0.0"
-    think-model-mysql "^1.0.0"
-    think-watcher "^3.0.0"
-    think-websocket "1.0.8"
-    think-websocket-socket.io "1.0.13"
-    thinkjs "^3.0.0"
-    url-loader "4.1.1"
-    webpack "5.89.0"
-    webpack-bundle-analyzer "4.10.1"
-    webpack-cli "5.1.4"
-    webpackbar "5.0.2"
-    ws "8.16.0"
-
-lyr-code-editor@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/lyr-code-editor/-/lyr-code-editor-1.0.4.tgz#0936f1c8440f0ff15d5f3c3aa6290b89ffd58716"
-  integrity sha512-0ghRFyyya32ykFtV/zmu29kG9KsxX/ZHkCQ4uMaS/LYMyIfXdfsbVgz5u8WQkRdX5S9Bqlw3mTXacgxWpMUXkQ==
-  dependencies:
-    "@monaco-editor/loader" "^1.3.3"
-    lodash.clonedeep "4.5.0"
-    lodash.debounce "4.0.8"
-    monaco-editor-textmate "4.0.0"
-    monaco-textmate "3.0.1"
-    onigasm "2.2.5"
-    vscode-theme-to-monaco-theme-web "1.0.0"
-
-lyr-component@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/lyr-component/-/lyr-component-1.1.1.tgz#e348a012da86c8d2cfda6be0811c025483b310ca"
-  integrity sha512-RlFB/Ucaxr5twM6kGyLq59UISEM9AgBQb/owi2p6AZEGwfj/3FQMp7o0oEldui7wSBXUqdK0yMSC6xH67CcFPA==
-  dependencies:
-    dayjs "1.11.10"
-    lodash.clonedeepwith "4.5.0"
-    lodash.debounce "4.0.8"
-    lodash.mergewith "4.6.2"
-    lyr-hooks "0.0.3"
-    react-resizable "3.0.4"
-
-lyr-extra@0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/lyr-extra/-/lyr-extra-0.1.4.tgz#cf1e0821001a07f1019bef3a26ba6ef396357f93"
-  integrity sha512-RSKKd0KZe++lpqNGlyi5GnXbb7dEfGeJ3XRcCjI8SR7ruH1e/AIpNKPboj2ih9QB2S1ur4Wf2Fubi+t5AmLPUQ==
-
-lyr-hooks@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/lyr-hooks/-/lyr-hooks-0.0.3.tgz#bc02872960ba11594cd3dfb33db0cdffa9783ed4"
-  integrity sha512-jnBcT6S6Jk9CQJtffTxXwzReBLm9Kq26KJXavKODJgbuJaCX9XwBaUGKwRAopfUx5X4MFQN/FvgaWVPFv5rBNQ==
-  dependencies:
-    lodash.clonedeep "4.5.0"
-    screenfull "6.0.2"
-    use-sync-external-store "^1.2.0"
-
 make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -3657,11 +3646,6 @@ schema-utils@^4.0.0:
     ajv "^8.9.0"
     ajv-formats "^2.1.1"
     ajv-keywords "^5.1.0"
-
-screenfull@6.0.2:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/screenfull/-/screenfull-6.0.2.tgz#3dbe4b8c4f8f49fb8e33caa8f69d0bca730ab238"
-  integrity sha512-AQdy8s4WhNvUZ6P8F6PB21tSPIYKniic+Ogx0AacBMjKP1GUHN2E9URxQHtCusiwxudnCKkdy4GrHXPPJSkCCw==
 
 scroll-into-view-if-needed@2.2.20:
   version "2.2.20"
@@ -4450,10 +4434,10 @@ use-sidecar@^1.1.2:
     detect-node-es "^1.1.0"
     tslib "^2.0.0"
 
-use-sync-external-store@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmmirror.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
-  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+use-sync-external-store@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.2.2.tgz#c3b6390f3a30eba13200d2302dcdf1e7b57b2ef9"
+  integrity sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==
 
 util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
@@ -4485,11 +4469,6 @@ vary@^1, vary@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmmirror.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
-
-vscode-theme-to-monaco-theme-web@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/vscode-theme-to-monaco-theme-web/-/vscode-theme-to-monaco-theme-web-1.0.0.tgz#bfab07eacb00cef0b67a9c082d369b3324583d54"
-  integrity sha512-euHQQMAEclMsO9geOH4nuzP/ZUR6B3OIBvDP4AmfFTs8OFLKlRUsP01fqt+BrZEHb31jVqDTDQuc2lM5/7VkUw==
 
 watchpack@^2.4.0:
   version "2.4.0"

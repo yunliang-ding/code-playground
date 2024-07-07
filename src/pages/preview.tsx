@@ -1,6 +1,6 @@
 import { Component, useEffect, useState } from 'react';
-import { babelParse } from 'lyr-extra';
-import { isEmpty } from 'lyr-extra';
+import { babelParse } from '@yl-d/extra';
+import { isEmpty } from '@yl-d/extra';
 import { instance } from '@/axios';
 import CloudComponent from '@/cloud-component';
 import { useSearchParams } from 'react-router-dom';
@@ -33,7 +33,6 @@ const RenderApp = async ({ data, dependencies }) => {
         require: {
           '@arco-design/web-react': window.arco,
           '@arco-design/web-react/icon': window.arcoicon,
-          'lyr-component': window.lyr,
           ...dependencies,
         },
       });

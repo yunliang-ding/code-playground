@@ -8,10 +8,10 @@
     "deploy": "lyr deploy"
   },
   "dependencies": {
-    "lyr-extra": "0.1.4",
-    "lyr-code-editor": "1.0.4"
+    "@yl-d/extra": "1.0.0",
+    "@yl-d/code-editor": "1.0.5"
   },
   "devDependencies": {
-    "lyr-cli": "1.0.27"
+    "@yl-d/cli": "1.0.0"
   }
 }

@@ -1,4 +1,4 @@
-import { CodeEditor } from 'lyr-code-editor';
+import { CodeEditor } from '@yl-d/code-editor';
 import Tabs from './tabs';
 
 const Container = ({ item, previewRender }) => {

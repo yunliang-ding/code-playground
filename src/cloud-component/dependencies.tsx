@@ -1,7 +1,7 @@
 /** 资源包 */
-import { CreateDrawer, SchemaProps } from 'lyr-component';
+import { CreateDrawer, SchemaProps } from '@yl-d/components';
 import { IconPlus } from '@arco-design/web-react/icon';
-import { CodeEditor } from 'lyr-code-editor';
+import { CodeEditor } from '@yl-d/code-editor';
 
 const iconMapping = {
   'less': "javascript-lang-file-icon",

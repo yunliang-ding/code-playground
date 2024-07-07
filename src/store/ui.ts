@@ -1,5 +1,5 @@
-import { create } from 'lyr-hooks';
+import { createStore } from '@yl-d/components';
 
-export default create({
+export default createStore({
   dark: true,
 });

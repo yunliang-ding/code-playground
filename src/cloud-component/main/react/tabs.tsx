@@ -1,6 +1,6 @@
-import { Button } from 'lyr-component';
+import { Button } from '@yl-d/components';
 import { Message, Upload } from '@arco-design/web-react';
-import { downloadFile } from 'lyr-extra';
+import { downloadFile } from '@yl-d/extra';
 import { IconClose } from '@arco-design/web-react/icon';
 import store from '@/store';
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { CodeEditor } from 'lyr-code-editor';
+import { CodeEditor } from '@yl-d/code-editor';
 import Tabs from './tabs';
 import store from '@/store';
 
