@@ -6,7 +6,7 @@
  */
 import ReactDOM from 'react-dom';
 import { useEffect, useRef, useState } from 'react';
-import { babelParse, MarkdownViewer } from '@yl-d/extra';
+import { babelParse, MarkdownViewer } from '@yl-d/shared';
 
 import Main, { injectStyle } from './main';
 import Menus from './menus';

@@ -1,6 +1,6 @@
 import { Button } from '@yl-d/components';
 import { Message, Upload } from '@arco-design/web-react';
-import { downloadFile } from '@yl-d/extra';
+import { downloadFile } from '@yl-d/shared';
 import { IconClose } from '@arco-design/web-react/icon';
 import store from '@/store';
 

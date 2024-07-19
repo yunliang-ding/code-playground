@@ -744,10 +744,10 @@
     react-resizable "3.0.4"
     use-sync-external-store "1.2.2"
 
-"@yl-d/extra@1.0.0":
+"@yl-d/shared@1.0.0":
   version "1.0.0"
-  resolved "https://registry.npmjs.org/@yl-d/extra/-/extra-1.0.0.tgz#3c86e8de1aa4922bc01e24c65bdc013feb226616"
-  integrity sha512-IrTzLJpTdivc2m8C0qkNfYzsv0sbTP9EQ9IIclNd6Jrl13AY4k0sqfW66CnD6rF4921lvfxVlSgz5OA7fMF2NA==
+  resolved "https://registry.npmjs.org/@yl-d/shared/-/shared-1.0.0.tgz#1b9bb06b6bdc437d975338b95d9f9856cfccf130"
+  integrity sha512-GCpu3Gsdv4DdU1stACuQG4anKj82DyqE4UTkAvoH2MZT9XHLubTRcihcaGUtKJgi6kzi1/gcLT9u8dcaP4MMfQ==
 
 accepts@^1.3.5, accepts@~1.3.4:
   version "1.3.8"

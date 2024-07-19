@@ -1,6 +1,6 @@
 /* eslint-disable require-atomic-updates */
 /* eslint-disable @iceworks/best-practices/recommend-polyfill */
-import { isEmpty } from '@yl-d/extra';
+import { isEmpty } from '@yl-d/shared';
 import Dependencies from './dependencies';
 import { IconRender } from './main';
 import { IconPlus } from '@arco-design/web-react/icon';

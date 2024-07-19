@@ -1,6 +1,5 @@
 import { Component, useEffect, useState } from 'react';
-import { babelParse } from '@yl-d/extra';
-import { isEmpty } from '@yl-d/extra';
+import { isEmpty, babelParse } from '@yl-d/shared';
 import { instance } from '@/axios';
 import CloudComponent from '@/cloud-component';
 import { useSearchParams } from 'react-router-dom';

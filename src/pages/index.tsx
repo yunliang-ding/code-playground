@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button, CreateDrawer } from '@yl-d/components';
 import { Message, Notification, Space } from '@arco-design/web-react';
-import { downloadFile } from '@yl-d/extra';
+import { downloadFile } from '@yl-d/shared';
 import { instance } from '@/axios';
 import Step from '@/component/step';
 import CloudComponent from '@/cloud-component';
